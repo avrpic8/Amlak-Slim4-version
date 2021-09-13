@@ -1,3 +1,3 @@
-# Slim4-mvc-Skeleton
+# Amlak project by Slim4 framework
 
-A simple MVC skeleton top of Slim4 framework similar to Laravel
+This is the amlak project with powerful slim4 framework.
