@@ -2,7 +2,8 @@
 
 namespace System\DataBase\DBBuilder;
 
-use System\Database\DBConnection\DBConnection;
+
+use System\DataBase\DBConnection\DBConnection;
 
 class DBBuilder{
 

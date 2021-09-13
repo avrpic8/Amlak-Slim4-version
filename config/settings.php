@@ -34,7 +34,7 @@ $settings['error'] = [
 $settings['db'] = [
     'driver' => 'mysql',
     'host' => '127.0.0.1',
-    'database' => 'slim-test',
+    'database' => 'new_mvc',
     'username' => 'root',
     'password' => '',
     'collation' => 'utf8_general_ci',
@@ -54,7 +54,7 @@ $settings['db'] = [
 ];
 
 $settings['APP'] = [
-    'APP_TITLE' => 'mvc project',
+    'APP_TITLE' => 'Amlak-slim4',
     'BASE_URL'  => 'http://localhost:8000',
     'BASE_DIR'  => dirname(__DIR__),
     'providers' =>[

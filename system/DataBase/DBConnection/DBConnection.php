@@ -2,10 +2,8 @@
 
 namespace System\DataBase\DBConnection;
 
-use Laminas\Config\Config;
 use PDO;
 use PDOException;
-use System\Application\Application;
 
 class DBConnection{
 
