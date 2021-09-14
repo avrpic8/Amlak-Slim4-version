@@ -3,6 +3,7 @@
 use Slim\App;
 use System\Application\Application;
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Container\ContainerInterface;
 use Jenssegers\Blade\Blade;
 use Laminas\Config\Config;
 
@@ -113,6 +114,14 @@ function url($url): string{
     return currentDomain() . ("/" . trim($url, "/ "));
 }
 
+function redirect($url){
+
+    $url = trim($url, '/ ');
+    $url = strpos($url, currentDomain()) === 0 ? $url : currentDomain() . "/" . $url;
+    header("Location: " .$url);
+    exit();
+}
+
 function currentUrl(): string{
 
     return currentDomain() . $_SERVER['REQUEST_URI'];
@@ -125,6 +134,22 @@ function generateToken(){
 
 function getApp(): App{
     return Application::getApp();
+}
+
+function container(): ?ContainerInterface
+{
+    return getApp()->getContainer();
+}
+
+function dependency($name){
+
+    return container()->get($name);
+}
+
+function route($name, $data = [], $queryParams = []): string{
+
+    $url = getApp()->getRouteCollector()->getNamedRoute($name);
+    return currentDomain() . $url->getPattern();
 }
 
 function getConfig(): Config{

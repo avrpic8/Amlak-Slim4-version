@@ -4,54 +4,40 @@ namespace System\Auth;
 
 use App\Models\User;
 use System\Session\Session;
-use Psr\Http\Message\ResponseInterface as Response;
 
 class Auth{
 
-    private $redirectTo = "/login";
-    private Response $response;
-
-    private function userMethod(){
+    public static function user(){
 
         if(!Session::get('user')){
-            return $this->response
-                ->withHeader('Location', '/login')
-                ->withStatus(302);
+            redirect('login');
         }
 
         $user = User::find(Session::get('user'));
         if(empty($user)){
             Session::remove('user');
-
-            return $this->response
-                ->withHeader('Location', '/login')
-                ->withStatus(302);
+            redirect('login');
         } else{
             return $user;
         }
     }
 
-    private function checkMethod(){
+    public static function check(){
 
         if(!Session::get('user')){
-            return $this->response
-                ->withHeader('Location', '/login')
-                ->withStatus(302);
+            redirect('login');
         }
 
         $user = User::find(Session::get('user'));
         if(empty($user)){
             Session::remove('user');
-
-            return $this->response
-                ->withHeader('Location', '/login')
-                ->withStatus(302);
+            redirect('login');
         } else{
             return true;
         }
     }
 
-    private function checkLoginMethod(){
+    public static function checkLogin(){
 
         if(!Session::get('user')){
             return false;
@@ -64,7 +50,7 @@ class Auth{
             return true;
     }
 
-    private function loginByEmailMethod($email, $password){
+    public static function loginByEmail($email, $password){
 
         $user = User::where('email', $email)->get();
         if(empty($user)){
@@ -81,7 +67,7 @@ class Auth{
         }
     }
 
-    private function loginByIdMethod($id){
+    public static function loginById($id){
 
         $user = User::find($id);
         if(empty($user)){
@@ -93,27 +79,8 @@ class Auth{
         }
     }
 
-    private function logOutMethod(){
+    public static function logOut(){
 
         Session::remove("user");
-    }
-
-    public function __call($name, $arguments){
-
-        return $this->methodCaller($name, $arguments);
-    }
-
-    public static function __callStatic($name, $arguments){
-
-        $instance = new self();
-        return $instance->methodCaller($name, $arguments);
-    }
-
-    private function methodCaller($method, $arguments){
-
-        $suffix = 'Method';
-        $methodName = $method.$suffix;
-
-        return call_user_func_array(array($this, $methodName), $arguments);
     }
 }

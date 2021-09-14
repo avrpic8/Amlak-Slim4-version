@@ -45,4 +45,4 @@
         </ul>
     </div>
 </div>
-<!-- END: Main Menu-->
+<!-- END: Main Menu--><?php /**PATH /home/saeed/Smart Electronics/Web/Amlak-slim4/resources/views/admin/layouts/sidebar.blade.php ENDPATH**/ ?>

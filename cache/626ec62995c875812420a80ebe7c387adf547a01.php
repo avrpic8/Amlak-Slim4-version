@@ -37,4 +37,4 @@
 <!-- BEGIN: Custom CSS-->
 <link rel="stylesheet" type="text/css" href="<?= asset('admin-assets/css-rtl/custom-rtl.css')?>">
 <!--<link rel="stylesheet" type="text/css" href="../../../assets/css/style-rtl.css">-->
-<!-- END: Custom CSS-->
+<!-- END: Custom CSS--><?php /**PATH /home/saeed/Smart Electronics/Web/Amlak-slim4/resources/views/admin/layouts/head.blade.php ENDPATH**/ ?>

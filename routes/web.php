@@ -1,12 +1,14 @@
 <?php
 
 use Slim\App;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Middleware\AuthMiddleware;
 
 
 return function (App $app) {
 
-    $app->get('/', [AuthController::class , 'index']);
-    $app->get('/create', [AuthController::class , 'create'])->setName('create');
+    //// Admin Routes
+    $app->get('/admin', [AdminController::class , 'index'])
+        ->add(new AuthMiddleware($app->getResponseFactory()))
+        ->setName('admin.index');
 };

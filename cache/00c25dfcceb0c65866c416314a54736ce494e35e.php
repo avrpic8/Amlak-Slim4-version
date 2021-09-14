@@ -6,8 +6,8 @@ use System\Auth\Auth;
 <html lang="en">
 
 <head>
-    @include("admin.layouts.head")
-    @yield("head")
+    <?php echo $__env->make("admin.layouts.head", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->yieldContent("head"); ?>
 </head>
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click"
@@ -43,7 +43,7 @@ use System\Auth\Auth;
 </nav>
 
 
-@include('admin.layouts.sidebar')
+<?php echo $__env->make('admin.layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
 <!-- BEGIN: Content-->
@@ -52,7 +52,7 @@ use System\Auth\Auth;
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
 
-        @yield("content");
+        <?php echo $__env->yieldContent("content"); ?>;
 
     </div>
 </div>
@@ -61,8 +61,8 @@ use System\Auth\Auth;
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
 
-@include("admin.layouts.scripts")
-@yield("scripts")
+<?php echo $__env->make("admin.layouts.scripts", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->yieldContent("scripts"); ?>
 </body>
 
-</html>
+</html><?php /**PATH /home/saeed/Smart Electronics/Web/Amlak-slim4/resources/views/admin/layouts/app.blade.php ENDPATH**/ ?>
