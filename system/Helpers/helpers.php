@@ -127,6 +127,11 @@ function currentUrl(): string{
     return currentDomain() . $_SERVER['REQUEST_URI'];
 }
 
+function currentRoute(): string{
+
+    return $_SERVER['REQUEST_URI'];
+}
+
 function generateToken(){
 
     return bin2hex(openssl_random_pseudo_bytes(32));
@@ -146,10 +151,10 @@ function dependency($name){
     return container()->get($name);
 }
 
-function route($name, $data = [], $queryParams = []): string{
+function route($name, $data = [], $params = []): string{
 
-    $url = getApp()->getRouteCollector()->getNamedRoute($name);
-    return currentDomain() . $url->getPattern();
+    $routeParser = getApp()->getRouteCollector()->getRouteParser();
+    return $routeParser->urlFor($name, $data);
 }
 
 function getConfig(): Config{

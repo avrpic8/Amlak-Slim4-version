@@ -22,6 +22,7 @@ class AuthMiddleware implements MiddlewareInterface {
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        //dd(route('admin.category.edit'));
         Auth::loginById(1);
         Auth::check();
         if(Auth::user()->user_type != 'admin'){

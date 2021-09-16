@@ -19,12 +19,14 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
             <li class=" navigation-header"><span>لینک ها</span></li>
-            <li class=" nav-item active"><a href="<?= route('admin.index')?>"><i class="feather icon-mail"></i><span
+                <li class=" nav-item <?= sideBarActive(route('admin.index'), false)?>"><a href="<?= route('admin.index')
+                ?>"><i class="feather icon-mail"></i><span
                             class="menu-title"
-                                                                                           data-i18n="Email">خانه</span></a>
+                            data-i18n="Email">خانه</span></a>
             </li>
-            <li class=" nav-item "><a href=""><i class="feather icon-message-square"></i><span class="menu-title"
-                                                                                               data-i18n="Chat">دسته بندی</span></a>
+            <li class=" nav-item <?= sideBarActive(route('admin.category.index'))?>"><a href="<?= route('admin.category.index')?>"><i class="feather
+            icon-message-square"></i><span class="menu-title"
+                                           data-i18n="Chat">دسته بندی</span></a>
             </li>
             <li class=" nav-item "><a href=""><i class="feather icon-check-square"></i><span class="menu-title"
                                                                                              data-i18n="Todo">اخبار</span></a>

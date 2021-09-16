@@ -11,12 +11,9 @@
 
     "autoload": {
 
-        "files": [
-            "system/Helpers/helpers.php"
-        ],
         "psr-4": {
-            "App\\": "app/",
-            "System\\": "system/"
+            "System\\": "system/",
+            "App\\": "app/"
         }
     }
 }

@@ -47,6 +47,14 @@ class Application
         (require dirname(__DIR__, 2) . '/config/middleware.php')(self::$app);
     }
 
+    private function loadHelpers(){
+
+        require dirname(__DIR__) . '/Helpers/helpers.php';
+        if(file_exists(dirname(__DIR__, 2) . '/app/Http/helpers.php')){
+            require_once (dirname(__DIR__, 2) . '/app/Http/helpers.php');
+        }
+    }
+
     public static function getApp(): App{
         return self::$app;
     }
@@ -62,6 +70,7 @@ class Application
         $this->initContainer();
         $this->registersRoutes();
         $this->initDatabase();
+        $this->loadHelpers();
 
         return self::$app;
     }
