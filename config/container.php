@@ -11,7 +11,6 @@ return [
         return require __DIR__ . '/settings.php';
     },
 
-
     Config::class => function () {
         return new Config(require __DIR__ . '/settings.php');
     },

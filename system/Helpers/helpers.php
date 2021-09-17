@@ -132,16 +132,37 @@ function currentRoute(): string{
     return $_SERVER['REQUEST_URI'];
 }
 
+function rootPath($path = null)
+{
+    $root = __DIR__."/../..";
+
+    return realpath($path ? $root."/".$path : $root);
+}
+
+function resource($path = null)
+{
+    $resource = rootPath("resources");
+
+    return $path ? $resource."/".$path : $resource;
+}
+
 function generateToken(){
 
     return bin2hex(openssl_random_pseudo_bytes(32));
+}
+
+function validator(array $data, array $rules, array $messages = [], array $customAttributes = [])
+{
+
+    $validator = require dirname(__DIR__) . '/Dependency/validator.php';
+    return $validator->make($data, $rules, $messages, $customAttributes);
 }
 
 function getApp(): App{
     return Application::getApp();
 }
 
-function container(): ?ContainerInterface
+function container()
 {
     return getApp()->getContainer();
 }

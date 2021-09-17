@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
-use Illuminate\Support\Facades\DB;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use App\Http\Requests\Admin\CategoryRequest;
+use App\Models\Category;
 
 class CategoryController{
 
@@ -23,7 +23,8 @@ class CategoryController{
 
     public function store(Request $request, Response $response): Response
     {
-        $data = $request->getParsedBody();
+        $catRequest = new CategoryRequest($request);
+        $data = $catRequest->dataValidation();
         if(empty($data['parent_id'])) unset($data['parent_id']);
         Category::query()->create($data);
         return $response

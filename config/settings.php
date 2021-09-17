@@ -58,7 +58,8 @@ $settings['APP'] = [
     'BASE_URL'  => 'http://localhost:8000',
     'BASE_DIR'  => dirname(__DIR__),
     'providers' =>[
-        \App\Providers\SessionProvider::class
+        \App\Providers\SessionProvider::class,
+        \App\Providers\DatabaseProvider::class
     ]
 ];
 
