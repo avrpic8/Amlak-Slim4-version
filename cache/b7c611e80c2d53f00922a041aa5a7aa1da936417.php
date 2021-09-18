@@ -29,7 +29,9 @@
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="helperText">نام دسته</label>
-                                            <input value="" name="name" type="text" id="helperText" class="form-control" placeholder="نام ...">
+                                            <input value="<?= old('name')?>" name="name" type="text" id="helperText"
+                                                   class="form-control <?= errorClass('name')?>" placeholder="نام ...">
+                                            <?= errorText('name')?>
                                         </fieldset>
                                     </div>
 
@@ -40,7 +42,7 @@
                                                 <select name="parent_id" class="select2 form-control">
                                                     <option value="">درصورت وجود والد انتخاب شود</option>
                                                     <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                                        <option value="<?= $category->id ?>" <?= old('parent_id') == $category->id ? 'selected' : '' ?>><?= $category->name ?></option>
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </select>
                                             </div>

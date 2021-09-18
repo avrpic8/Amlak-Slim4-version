@@ -31,7 +31,9 @@
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="helperText">نام دسته</label>
-                                            <input value="" name="name" type="text" id="helperText" class="form-control" placeholder="نام ...">
+                                            <input value="<?= old('name')?>" name="name" type="text" id="helperText"
+                                                   class="form-control <?= errorClass('name')?>" placeholder="نام ...">
+                                            <?= errorText('name')?>
                                         </fieldset>
                                     </div>
 
@@ -42,7 +44,7 @@
                                                 <select name="parent_id" class="select2 form-control">
                                                     <option value="">درصورت وجود والد انتخاب شود</option>
                                                     @foreach($categories as $category)
-                                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                                        <option value="<?= $category->id ?>" <?= old('parent_id') == $category->id ? 'selected' : '' ?>><?= $category->name ?></option>
                                                     @endforeach
                                                 </select>
                                             </div>

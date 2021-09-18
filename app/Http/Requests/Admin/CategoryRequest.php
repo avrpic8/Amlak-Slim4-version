@@ -28,8 +28,13 @@ class CategoryRequest
             'parent_id'=>"exists:categories,id"
         ];
 
-        return validator($data, $rules);
+        $validation = validator($data, $rules);
+
+        if($validation->fails()){
+            error('name', $validation->messages()->first());
+            return false;
+        }
+
+        return true;
     }
-
-
 }

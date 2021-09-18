@@ -57,6 +57,8 @@ $settings['APP'] = [
     'APP_TITLE' => 'Amlak-slim4',
     'BASE_URL'  => 'http://localhost:8000',
     'BASE_DIR'  => dirname(__DIR__),
+    'locale'    => 'en',
+    'fallback_locale' => 'en',
     'providers' =>[
         \App\Providers\SessionProvider::class,
         \App\Providers\DatabaseProvider::class

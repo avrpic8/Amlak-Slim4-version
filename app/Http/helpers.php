@@ -8,3 +8,13 @@ function sideBarActive($url, $contain = true){
         return currentRoute() === $url ? 'active' : '';
     }
 }
+
+function errorClass($name): string{
+
+    return errorExist($name) ? 'is-invalid' : '';
+}
+
+function errorText($name): string{
+
+    return errorExist($name) ? '<div><small class="text-danger">' . error($name) . '</small></div>' : '';
+}

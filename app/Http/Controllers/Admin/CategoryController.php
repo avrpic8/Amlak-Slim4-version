@@ -24,7 +24,14 @@ class CategoryController{
     public function store(Request $request, Response $response): Response
     {
         $catRequest = new CategoryRequest($request);
-        $data = $catRequest->dataValidation();
+        $data = $catRequest->all();
+        $validation = $catRequest->dataValidation();
+
+        if(!$validation)
+            return $response
+                ->withHeader('Location', '/admin/category/create')
+                ->withStatus(302);
+
         if(empty($data['parent_id'])) unset($data['parent_id']);
         Category::query()->create($data);
         return $response

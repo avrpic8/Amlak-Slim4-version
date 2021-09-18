@@ -3,6 +3,7 @@
 namespace System\Application;
 
 use App\Providers\DatabaseProvider;
+use App\Providers\SessionProvider;
 use App\Providers\TranslationProvider;
 use DI\Container;
 use DI\ContainerBuilder;
@@ -36,20 +37,19 @@ class Application
 
     private function loadProviders(){
 
-        $providers = self::$config->toArray()['APP']['providers'];
+        /*$providers = self::$config->toArray()['APP']['providers'];
         foreach ($providers as $provider) {
             $providerObject = new $provider();
             $providerObject->boot();
-        }
-    }
+        }*/
+        $databaseProvider = new DatabaseProvider($this->container);
+        $databaseProvider->boot();
 
-    private function initDatabase(){
+        $translatorProvider = new TranslationProvider($this->container);
+        $translatorProvider->boot();
 
-        $dbSettings = self::$config->toArray()['db'];
-        $capsule = new Manager();
-        $capsule->addConnection($dbSettings);
-        $capsule->bootEloquent();
-        $capsule->setAsGlobal();
+        $session = new SessionProvider();
+        $session->boot();
     }
 
     private function registersRoutes(){
@@ -71,13 +71,8 @@ class Application
 
         $this->initContainer();
         $this->loadHelpers();
+        $this->loadProviders();
         $this->registersRoutes();
-
-        $databaseProvider = new DatabaseProvider($this->container);
-        $databaseProvider->boot();
-
-        $translatorProvider = new TranslationProvider($this->container);
-        $translatorProvider->boot();
 
         return self::$app;
     }

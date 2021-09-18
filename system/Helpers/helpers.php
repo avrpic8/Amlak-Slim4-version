@@ -122,6 +122,12 @@ function redirect($url){
     exit();
 }
 
+function back(){
+
+    $http_referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
+    redirect($http_referer);
+}
+
 function currentUrl(): string{
 
     return currentDomain() . $_SERVER['REQUEST_URI'];
@@ -132,17 +138,13 @@ function currentRoute(): string{
     return $_SERVER['REQUEST_URI'];
 }
 
-function rootPath($path = null)
-{
+function rootPath($path = null){
     $root = __DIR__."/../..";
-
     return realpath($path ? $root."/".$path : $root);
 }
 
-function resource($path = null)
-{
+function resource($path = null){
     $resource = rootPath("resources");
-
     return $path ? $resource."/".$path : $resource;
 }
 
@@ -151,8 +153,7 @@ function generateToken(){
     return bin2hex(openssl_random_pseudo_bytes(32));
 }
 
-function validator(array $data, array $rules, array $messages = [], array $customAttributes = [])
-{
+function validator(array $data, array $rules, array $messages = [], array $customAttributes = []){
 
     $validator = require dirname(__DIR__) . '/Dependency/validator.php';
     return $validator->make($data, $rules, $messages, $customAttributes);

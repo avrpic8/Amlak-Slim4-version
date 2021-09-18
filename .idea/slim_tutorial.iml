@@ -55,12 +55,12 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-stdlib" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/translation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/validation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/mime" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-idn" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php72" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/translation" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

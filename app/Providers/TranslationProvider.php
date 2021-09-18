@@ -13,19 +13,19 @@ class TranslationProvider extends Provider
 {
 
     private Container $container;
-    private $translator
+    private Translator $translator;
 
-    public function __construct(Container$container)
+    public function __construct(Container $container)
     {
         $this->container = $container;
     }
 
     public function boot()
     {
-        $loader = new FileLoader(new Filesystem(), resource('lang'));
+        $loader = new FileLoader(new Filesystem(), resource('langs'));
 
-        $this->translator = new Translator($loader, );
-        $this->translator->setFallback(config('app.fallback_locale'));
+        $this->translator = new Translator($loader, getConfig()->toArray()['APP']['locale']);
+        $this->translator->setFallback(getConfig()->toArray()['APP']['fallback_locale']);
 
         $this->container->set('translator', function (){
             return $this->translator;
