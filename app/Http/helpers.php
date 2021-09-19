@@ -18,3 +18,8 @@ function errorText($name): string{
 
     return errorExist($name) ? '<div><small class="text-danger">' . error($name) . '</small></div>' : '';
 }
+
+function oldOrValue($name, $value){
+
+    return empty(old($name)) ? $value : old($name);
+}

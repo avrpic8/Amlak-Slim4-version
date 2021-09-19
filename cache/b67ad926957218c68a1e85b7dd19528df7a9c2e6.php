@@ -1,5 +1,5 @@
-<?php $__env->startSection('title'); ?>
-    <title>ادمین|دسته بندی ها</title>
+<?php $__env->startSection('head'); ?>
+    <title>ادمین | دسته بندی ها</title>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>

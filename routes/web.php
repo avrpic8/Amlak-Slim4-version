@@ -32,7 +32,7 @@ return function (App $app) {
         ->add(new AuthMiddleware($app->getResponseFactory()))
         ->setName('admin.category.edit');
 
-    $app->put('/admin/category/update/{id}', [CategoryController::class , 'update'])
+    $app->post('/admin/category/update/{id}', [CategoryController::class , 'update'])
         ->add(new AuthMiddleware($app->getResponseFactory()))
         ->setName('admin.category.update');
 

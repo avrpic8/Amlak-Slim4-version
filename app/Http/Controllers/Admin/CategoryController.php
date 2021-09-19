@@ -27,31 +27,52 @@ class CategoryController{
         $data = $catRequest->all();
         $validation = $catRequest->dataValidation();
 
-        if(!$validation)
-            return $response
-                ->withHeader('Location', '/admin/category/create')
-                ->withStatus(302);
+        if(!$validation) back();
 
         if(empty($data['parent_id'])) unset($data['parent_id']);
         Category::query()->create($data);
+
         return $response
             ->withHeader('Location', '/admin/category')
             ->withStatus(302);
     }
 
-    public function edit(Request $request, Response $response)
+    public function edit(Request $request, Response $response): Response
     {
-        return $response;
+        $id = $request->getAttribute('id');
+        $category = Category::query()->find($id);
+        $categories = Category::all();
+        return view($response, 'admin.category.edit', compact('category','categories'));
     }
 
-    public function update(Request $request, Response $response)
+    public function update(Request $request, Response $response): Response
     {
+        $id = $request->getAttribute('id');
+
+        $catRequest = new CategoryRequest($request);
+        $data = $catRequest->all();
+        $validation = $catRequest->dataValidation();
+
+        if(!$validation) back();
+
+
+        if(empty($data['parent_id'])) $data['parent_id'] = null;
+        //dd($data['parent_id']);
+        Category::query()->where('id', $id)->update($data);
+
+        return $response
+            ->withHeader('Location', '/admin/category')
+            ->withStatus(302);
 
     }
 
-    public function destroy(Request $request, Response $response)
+    public function destroy(Request $request, Response $response): Response
     {
-        return $response;
-    }
+        $id = $request->getAttribute('id');
+        Category::query()->where('id', $id)->delete();
 
+        return $response
+            ->withHeader('Location', '/admin/category')
+            ->withStatus(302);
+    }
 }

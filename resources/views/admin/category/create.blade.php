@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
 
-@section('title')
+@section('head')
 
-    <title>ادمین|ساخت دسته جدید</title>
+    <title>ادمین | ساخت دسته جدید</title>
 
 @endsection
 
