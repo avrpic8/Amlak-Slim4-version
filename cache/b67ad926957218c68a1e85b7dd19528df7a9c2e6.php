@@ -36,7 +36,7 @@
                                         <tr role="row" class="odd">
                                             <td class="sorting_1"><?php echo e($category->id); ?></td>
                                             <td><?php echo e($category->name); ?></td>
-                                            <td><?php echo e($category->parent_id); ?></td>
+                                            <td><?php echo e(empty($category->parent_id) ? '' : $category->parent()->value('name')); ?></td>
                                             <td style="min-width: 6rem; text-align: left;">
                                                 <a href="<?= route('admin.category.edit', ['id'=> $category->id])?>"
                                                    class="btn btn-info

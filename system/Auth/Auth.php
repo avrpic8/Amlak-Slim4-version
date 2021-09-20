@@ -2,7 +2,8 @@
 
 namespace System\Auth;
 
-use App\Models\User;
+
+use App\Http\Models\User;
 use System\Session\Session;
 
 class Auth{

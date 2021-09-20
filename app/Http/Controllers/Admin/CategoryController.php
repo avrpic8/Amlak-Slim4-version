@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Http\Requests\Admin\CategoryRequest;
-use App\Models\Category;
+use App\Http\Models\Category;
 
 class CategoryController{
 
@@ -37,27 +37,24 @@ class CategoryController{
             ->withStatus(302);
     }
 
-    public function edit(Request $request, Response $response): Response
+    public function edit(Request $request, Response $response, array $args): Response
     {
-        $id = $request->getAttribute('id');
+        $id = $args['id'];
         $category = Category::query()->find($id);
         $categories = Category::all();
         return view($response, 'admin.category.edit', compact('category','categories'));
     }
 
-    public function update(Request $request, Response $response): Response
+    public function update(Request $request, Response $response, array $args): Response
     {
-        $id = $request->getAttribute('id');
-
+        $id = $args['id'];
         $catRequest = new CategoryRequest($request);
         $data = $catRequest->all();
         $validation = $catRequest->dataValidation();
 
         if(!$validation) back();
 
-
         if(empty($data['parent_id'])) $data['parent_id'] = null;
-        //dd($data['parent_id']);
         Category::query()->where('id', $id)->update($data);
 
         return $response
@@ -66,9 +63,10 @@ class CategoryController{
 
     }
 
-    public function destroy(Request $request, Response $response): Response
+    public function destroy(Request $request, Response $response, array $args): Response
     {
-        $id = $request->getAttribute('id');
+        //$id = $request->getAttribute('id');
+        $id = $args['id'];
         Category::query()->where('id', $id)->delete();
 
         return $response

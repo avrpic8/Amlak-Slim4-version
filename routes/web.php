@@ -1,9 +1,11 @@
 <?php
 
 use Slim\App;
+use Slim\Routing\RouteCollectorProxy;
+use App\Http\Middleware\AuthMiddleware;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Middleware\AuthMiddleware;
+use App\Http\Controllers\Admin\PostController;
 
 
 return function (App $app) {
@@ -16,27 +18,33 @@ return function (App $app) {
         ->setName('admin.index');
 
     //// Category Routes
-    $app->get('/admin/category', [CategoryController::class , 'index'])
-        ->add(new AuthMiddleware($app->getResponseFactory()))
-        ->setName('admin.category.index');
+    $app->group('/admin/category', function (RouteCollectorProxy $group){
+        $group->get('', [CategoryController::class , 'index'])
+            ->setName('admin.category.index');
 
-    $app->get('/admin/category/create', [CategoryController::class , 'create'])
-        ->add(new AuthMiddleware($app->getResponseFactory()))
-        ->setName('admin.category.create');
+        $group->get('/create', [CategoryController::class , 'create'])
+            ->setName('admin.category.create');
 
-    $app->post('/admin/category/store', [CategoryController::class , 'store'])
-        ->add(new AuthMiddleware($app->getResponseFactory()))
-        ->setName('admin.category.store');
+        $group->post('/store', [CategoryController::class , 'store'])
+            ->setName('admin.category.store');
 
-    $app->get('/admin/category/edit/{id}', [CategoryController::class , 'edit'])
-        ->add(new AuthMiddleware($app->getResponseFactory()))
-        ->setName('admin.category.edit');
+        $group->get('/edit/{id}', [CategoryController::class , 'edit'])
+            ->setName('admin.category.edit');
 
-    $app->post('/admin/category/update/{id}', [CategoryController::class , 'update'])
-        ->add(new AuthMiddleware($app->getResponseFactory()))
-        ->setName('admin.category.update');
+        $group->post('/update/{id}', [CategoryController::class , 'update'])
+            ->setName('admin.category.update');
 
-    $app->post('/admin/category/delete/{id}', [CategoryController::class , 'destroy'])
-        ->add(new AuthMiddleware($app->getResponseFactory()))
-        ->setName('admin.category.delete');
+        $group->post('/delete/{id}', [CategoryController::class , 'destroy'])
+            ->setName('admin.category.delete');
+
+    })->add(new AuthMiddleware($app->getResponseFactory()));
+
+    /// Post Routes
+    $app->group('/admin/post', function (RouteCollectorProxy $group){
+
+        $group->get('', [PostController::class , 'index'])
+            ->setName('admin.post.index');
+
+    })->add(new AuthMiddleware($app->getResponseFactory()));
+
 };
