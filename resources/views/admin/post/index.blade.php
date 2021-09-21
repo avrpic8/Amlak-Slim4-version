@@ -18,7 +18,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">اخبار</h4>
-                            <span><a href="#" class="btn btn-success">ایجاد</a></span>
+                            <span><a href="{{route('admin.post.create')}}" class="btn btn-success">ایجاد</a></span>
                         </div>
                         <div class="card-content">
                             <div class="card-body card-dashboard">
@@ -36,22 +36,27 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1">1</td>
-                                            <td>ساخت یک میلیون مسکن از آرزو تا واقعیت</td>
-                                            <td>اخبار مسکن</td>
-                                            <td>رامین فرامرزی</td>
-                                            <td><img style="width: 90px;" src="../admin-assets/images/elements/apple-watch.png" alt=""></td>
-                                            <td style="min-width: 16rem; text-align: left;">
-                                                <a href="#" class="btn btn-info waves-effect waves-light">ویرایش</a>
-                                                <form class="d-inline" action="#" method="post">
-                                                    <input type="hidden" name="_method" value="delete">
-                                                    <button type="submit" class="btn btn-danger waves-effect waves-light">حذف</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-
+                                        @foreach($posts as $post)
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">{{$post->id}}</td>
+                                                <td>{{$post->title}}</td>
+                                                <td>{{$post->category()->value('name')}}</td>
+                                                <td>{{$post->user()->value('first_name') . ' ' . $post->user()->value
+                                                ('last_name')}}</td>
+                                                <td><img style="width: 90px;"
+                                                         src="{{asset($post->image)}}" alt="">
+                                                </td>
+                                                <td style="min-width: 16rem; text-align: left;">
+                                                    <a href="#" class="btn btn-info waves-effect waves-light">ویرایش</a>
+                                                    <form class="d-inline" action="#" method="post">
+                                                        <input type="hidden" name="_method" value="delete">
+                                                        <button type="submit"
+                                                                class="btn btn-danger waves-effect waves-light">حذف
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>

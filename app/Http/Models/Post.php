@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['title', 'body', 'image'];
+    protected $fillable = ['title', 'body', 'image', 'user_id', 'cat_id', 'published_at', 'status'];
     protected $dates = ['deleted_at'];
+    protected $casts = ['image' => 'array'];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class, 'cat_id', 'id');
+    }
 }

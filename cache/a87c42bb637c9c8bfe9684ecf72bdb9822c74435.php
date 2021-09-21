@@ -16,7 +16,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">اخبار</h4>
-                            <span><a href="#" class="btn btn-success">ایجاد</a></span>
+                            <span><a href="<?php echo e(route('admin.post.create')); ?>" class="btn btn-success">ایجاد</a></span>
                         </div>
                         <div class="card-content">
                             <div class="card-body card-dashboard">
@@ -34,22 +34,27 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1">1</td>
-                                            <td>ساخت یک میلیون مسکن از آرزو تا واقعیت</td>
-                                            <td>اخبار مسکن</td>
-                                            <td>رامین فرامرزی</td>
-                                            <td><img style="width: 90px;" src="../admin-assets/images/elements/apple-watch.png" alt=""></td>
-                                            <td style="min-width: 16rem; text-align: left;">
-                                                <a href="#" class="btn btn-info waves-effect waves-light">ویرایش</a>
-                                                <form class="d-inline" action="#" method="post">
-                                                    <input type="hidden" name="_method" value="delete">
-                                                    <button type="submit" class="btn btn-danger waves-effect waves-light">حذف</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-
+                                        <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1"><?php echo e($post->id); ?></td>
+                                                <td><?php echo e($post->title); ?></td>
+                                                <td><?php echo e($post->category()->value('name')); ?></td>
+                                                <td><?php echo e($post->user()->value('first_name') . ' ' . $post->user()->value
+                                                ('last_name')); ?></td>
+                                                <td><img style="width: 90px;"
+                                                         src="<?php echo e(asset($post->image)); ?>" alt="">
+                                                </td>
+                                                <td style="min-width: 16rem; text-align: left;">
+                                                    <a href="#" class="btn btn-info waves-effect waves-light">ویرایش</a>
+                                                    <form class="d-inline" action="#" method="post">
+                                                        <input type="hidden" name="_method" value="delete">
+                                                        <button type="submit"
+                                                                class="btn btn-danger waves-effect waves-light">حذف
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </tbody>
                                     </table>
                                 </div>

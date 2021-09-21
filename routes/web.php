@@ -45,6 +45,21 @@ return function (App $app) {
         $group->get('', [PostController::class , 'index'])
             ->setName('admin.post.index');
 
+        $group->get('/create', [PostController::class , 'create'])
+            ->setName('admin.post.create');
+
+        $group->post('/store', [PostController::class , 'store'])
+            ->setName('admin.post.store');
+
+        $group->get('/edit/{id}', [PostController::class , 'edit'])
+            ->setName('admin.post.edit');
+
+        $group->post('/update/{id}', [PostController::class , 'update'])
+            ->setName('admin.post.update');
+
+        $group->post('/delete/{id}', [PostController::class , 'destroy'])
+            ->setName('admin.post.delete');
+
     })->add(new AuthMiddleware($app->getResponseFactory()));
 
 };
