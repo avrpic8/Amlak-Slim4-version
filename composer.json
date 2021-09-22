@@ -9,7 +9,8 @@
         "illuminate/translation": "^8.61",
         "laminas/laminas-config": "^3.6",
         "ext-pdo": "*",
-        "ext-openssl": "*"
+        "ext-openssl": "*",
+        "intervention/image": "^2.6"
     },
 
     "autoload": {

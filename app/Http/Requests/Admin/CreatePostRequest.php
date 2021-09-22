@@ -18,9 +18,9 @@ class CreatePostRequest
         return $this->request->getParsedBody();
     }
 
-    public function getFile($fileName){
-        $file = $this->request->getUploadedFiles();
-        return $file['image'];
+    public function getFile($name): array
+    {
+        return $_FILES[$name];
     }
 
     public function dataValidation(): bool{
