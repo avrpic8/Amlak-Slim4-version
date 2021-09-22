@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Models\Category;
 use App\Http\Models\Post;
-use App\Http\Requests\Admin\PostCreateRequest;
+use App\Http\Requests\Admin\CreatePostRequest;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use System\Auth\Auth;
@@ -25,15 +25,22 @@ class PostController
 
     public function store(Request $request, Response $response): Response
     {
-        $postRequest = new PostCreateRequest($request);
+        $postRequest = new CreatePostRequest($request);
         $data = $postRequest->all();
-        $validation = $postRequest->dataValidation();
+        $file = $postRequest->getFile('image');
 
+        $validation = $postRequest->dataValidation();
         if(!$validation) back();
 
         $data['user_id'] = Auth::user()->id;
         $data['status'] = 0;
 
+        /// store images
+        $path = 'images/posts/' . date('Y/M/d');
+        $name = date('Y_m_d_H_i_s_') .rand(10, 99);
+
+
+        return $response;
     }
 
     public function edit(Request $request, Response $response, array $args): Response
