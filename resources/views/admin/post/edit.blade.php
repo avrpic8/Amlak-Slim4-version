@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 
-@section('head')
-    <title>ادمین | ساخت خبر جدید </title>
-@endsection
 
+@section('head')
+    <title>ادمین | ویرایش خبر </title>
+@endsection
 
 @section('content')
 
@@ -24,13 +24,16 @@
                         <div class="card-content">
                             <div class="card-body card-dashboard">
 
-                                <form class="row" action="{{route('admin.post.store')}}" method="post"
+                                <form class="row" action="{{route('admin.post.update', ['id' => $post->id])}}"
+                                      method="post"
                                       enctype="multipart/form-data">
 
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="title">عنوان</label>
-                                            <input value="{{old('title')}}" name="title" type="text" id="title"
+                                            <input value="{{oldOrValue('title', $post->title)}}" name="title"
+                                                   type="text"
+                                                   id="title"
                                                    class="form-control <?= errorClass('title')?>"
                                                    placeholder="نام ...">
                                             <?= errorText('title')?>
@@ -41,7 +44,8 @@
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="published_at">تاریخ انتشار</label>
-                                            <input value="{{old('published_at')}}" name="published_at" type="date"
+                                            <input value="{{oldOrValue('published_at', date( "Y-m-d",strtotime($post->published_at)))}}"
+                                                   name="published_at" type="date"
                                                    id="published_at"
                                                    class="form-control <?= errorClass('published_at')?>">
                                             <?= errorText('published_at')?>
@@ -52,7 +56,9 @@
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="image">تصویر</label>
-                                            <input name="image" type="file" id="image" class="form-control-file <?= errorClass('image')?> ">
+                                            <input name="image" type="file" id="image"
+                                                   class="form-control-file <?= errorClass('image')?> ">
+                                            <img src="{{asset($post->image)}}" alt="" width="200" height="150" class="mt-4">
                                             <?= errorText('image')?>
                                         </fieldset>
                                     </div>
@@ -62,7 +68,8 @@
                                         <fieldset class="form-group">
                                             <div class="form-group">
                                                 <label for="cat_id">دسته</label>
-                                                <select name="cat_id" class="select2 form-control <?= errorClass('cat_id')?>">
+                                                <select name="cat_id"
+                                                        class="select2 form-control <?= errorClass('cat_id')?>">
                                                     @foreach($categories as $category)
                                                         <option value="{{$category->id}}" {{!empty(old('cat_id')) &&
                                                         $category->id === old('cat_id') ? 'selected' : ''}}>
@@ -78,9 +85,10 @@
                                     <div class="col-md-12">
                                         <section class="form-group">
                                             <label for="body">متن</label>
-                                            <textarea class="form-control <?= errorClass('body')?>" id="body" rows="5" name="body"
+                                            <textarea class="form-control <?= errorClass('body')?>" id="body" rows="5"
+                                                      name="body"
                                                       placeholder="متن ...">
-                                                {{old('body')}}
+                                                {{$post->body}}
                                             </textarea>
                                             <?= errorText('body')?>
                                         </section>

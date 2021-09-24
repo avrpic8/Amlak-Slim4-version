@@ -10,7 +10,7 @@ class Post extends Model
     use SoftDeletes;
     protected $fillable = ['title', 'body', 'image', 'user_id', 'cat_id', 'published_at', 'status'];
     protected $dates = ['deleted_at'];
-    protected $casts = ['image' => 'array'];
+    public $casts = ['image' => 'string', 'status' => 'boolean'];
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');

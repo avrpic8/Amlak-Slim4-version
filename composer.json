@@ -10,7 +10,8 @@
         "laminas/laminas-config": "^3.6",
         "ext-pdo": "*",
         "ext-openssl": "*",
-        "intervention/image": "^2.6"
+        "intervention/image": "^2.6",
+        "ext-json": "*"
     },
 
     "autoload": {

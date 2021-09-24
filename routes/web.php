@@ -60,6 +60,9 @@ return function (App $app) {
         $group->post('/delete/{id}', [PostController::class , 'destroy'])
             ->setName('admin.post.delete');
 
+        $group->post('/status/{id}', [PostController::class , 'changeState'])
+            ->setName('admin.post.status');
+
     })->add(new AuthMiddleware($app->getResponseFactory()));
 
 };

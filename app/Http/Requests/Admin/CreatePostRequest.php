@@ -6,16 +6,17 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class CreatePostRequest
 {
-    private Request $request;
+
+    private $data;
 
     public function __construct(Request $request)
     {
-        $this->request = $request;
+        $this->data = $request->getParsedBody();
     }
 
     public function all(){
 
-        return $this->request->getParsedBody();
+        return $this->data;
     }
 
     public function getFile($name): array
@@ -25,7 +26,6 @@ class CreatePostRequest
 
     public function dataValidation(): bool{
 
-        $data = $this->request->getParsedBody();
         $uploadFile = $_FILES['image'];
 
         /// data validation
@@ -35,22 +35,26 @@ class CreatePostRequest
             'cat_id' => 'required|exists:categories,id',
             'published_at' => 'required|date'
         ];
-        $validation = validator(array_merge($uploadFile,$data), $rules);
-        if($validation->fails()){
-            error('name', $validation->messages()->first());
+
+        $validation = validator($this->data, $rules);
+        if($validation->fails()) {
+            $errorsArray = $validation->errors()->toArray();
+            foreach ($errorsArray as $key => $message) {
+                error($key, $message[0]);
+            }
             return false;
         }
 
-        /// file validation
-        $rules = [
-            'image.*' => 'required|image|mimes:jpeg,jpg,png,gif',
-        ];
-        $validation = validator($uploadFile, $rules);
-        if($validation->fails()){
-            error('name', $validation->messages()->first());
-            return false;
-        }
-
+//        /// file validation
+//        $rules = [
+//            'image' => 'file|mimes:png,jpg'
+//        ];
+//
+//        $validation = validator($uploadFile, $rules);
+//        if($validation->fails()){
+//            error('image', $validation->messages()->first());
+//            return false;
+//        }
         return true;
     }
 }
