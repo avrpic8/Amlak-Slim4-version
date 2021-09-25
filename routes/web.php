@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdsController;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 use App\Http\Middleware\AuthMiddleware;
@@ -65,4 +66,35 @@ return function (App $app) {
 
     })->add(new AuthMiddleware($app->getResponseFactory()));
 
+    /// Ads Routes
+    $app->group('/admin/ads', function (RouteCollectorProxy $group){
+
+        $group->get('', [AdsController::class , 'index'])
+            ->setName('admin.ads.index');
+
+        $group->get('/create', [AdsController::class , 'create'])
+            ->setName('admin.ads.create');
+
+        $group->post('/store', [AdsController::class , 'store'])
+            ->setName('admin.ads.store');
+
+        $group->get('/edit/{id}', [AdsController::class , 'edit'])
+            ->setName('admin.ads.edit');
+
+        $group->post('/update/{id}', [AdsController::class , 'update'])
+            ->setName('admin.ads.update');
+
+        $group->post('/delete/{id}', [AdsController::class , 'destroy'])
+            ->setName('admin.ads.delete');
+
+        $group->get('/gallery/{id}', [AdsController::class , 'gallery'])
+            ->setName('admin.ads.gallery');
+
+        $group->post('/store-gallery-image/{id}', [AdsController::class , 'storeGalleryImage'])
+            ->setName('admin.ads.store.gallery.image');
+
+        $group->post('/delete-gallery-image/{id}', [AdsController::class , 'destroyGalleryImage'])
+            ->setName('admin.ads.delete.gallery.image');
+
+    })->add(new AuthMiddleware($app->getResponseFactory()));
 };

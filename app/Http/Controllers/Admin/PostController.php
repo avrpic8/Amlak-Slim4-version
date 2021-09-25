@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Models\Category;
 use App\Http\Models\Post;
 use App\Http\Requests\Admin\CreatePostRequest;
-use App\Http\Requests\Admin\UpdatePostRequest;
 use App\Http\Services\ImageUpload;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

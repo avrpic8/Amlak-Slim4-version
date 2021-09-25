@@ -45,11 +45,23 @@
                                                          src="<?php echo e(asset($post->image)); ?>" alt="">
                                                 </td>
                                                 <td style="min-width: 16rem; text-align: left;">
-                                                    <a href="#" class="btn btn-info waves-effect waves-light">ویرایش</a>
-                                                    <form class="d-inline" action="#" method="post">
+                                                    <a href="<?php echo e(route('admin.post.edit', ['id'=> $post->id])); ?>"
+                                                       class="btn btn-info waves-effect waves-light">ویرایش</a>
+                                                    <form class="d-inline"
+                                                          action="<?php echo e(route('admin.post.delete', ['id'=> $post->id])); ?>"
+                                                          method="post">
                                                         <input type="hidden" name="_method" value="delete">
                                                         <button type="submit"
                                                                 class="btn btn-danger waves-effect waves-light">حذف
+                                                        </button>
+                                                    </form>
+                                                    <form class="d-inline"
+                                                          action="<?php echo e(route('admin.post.status', ['id'=> $post->id])); ?>"
+                                                          method="post">
+                                                        <button type="submit"
+                                                                class="btn waves-effect waves-light <?php echo e($post->status ? 'btn-success' : 'btn-warning'); ?>">
+                                                            <?php echo e($post->status ? 'فعال' : 'غیرفعال'); ?>
+
                                                         </button>
                                                     </form>
                                                 </td>

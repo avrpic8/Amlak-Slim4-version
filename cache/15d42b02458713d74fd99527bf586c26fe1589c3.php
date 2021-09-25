@@ -34,9 +34,13 @@
             icon-check-square"></i><span class="menu-title"
                                          data-i18n="Todo">اخبار</span></a>
             </li>
-            <li class=" nav-item"><a href=""><i class="feather icon-calendar"></i><span class="menu-title"
-                                                                                        data-i18n="Calender">آگهی</span></a>
+
+            <li class="nav-item <?php echo e(sideBarActive(route('admin.ads.index'))); ?>"><a href="<?php echo e(route('admin.ads.index')); ?>"><i
+                            class="feather
+            icon-calendar"></i><span class="menu-title"
+                                     data-i18n="Calender">آگهی</span></a>
             </li>
+
             <li class=" nav-item "><a href=""><i class="feather icon-calendar"></i><span class="menu-title"
                                                                                          data-i18n="Calender">اسلاید شو</span></a>
             </li>
