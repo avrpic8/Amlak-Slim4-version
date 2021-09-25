@@ -63,12 +63,12 @@
                                                 <td>{{$advertise->tag}}</td>
                                                 <td>{{$advertise->user()->value('first_name') . ' ' . $advertise->user()->value('last_name') }}</td>
                                                 <td style="width: 22rem;">
-                                                    <a href="<?= route('admin.ads.gallery', ['id' => $advertise->id]) ?>"
+                                                    <a href="{{route('admin.ads.gallery', ['id' => $advertise->id])}}"
                                                        class="btn btn-warning">گالری</a>
-                                                    <a href="<?= route('admin.ads.edit', ['id' => $advertise->id]) ?>"
+                                                    <a href="{{route('admin.ads.edit', ['id' => $advertise->id])}}"
                                                        class="btn btn-info">ویرایش</a>
                                                     <form class="d-inline"
-                                                          action="<?= route('admin.ads.delete', ['id' => $advertise->id]) ?>"
+                                                          action="{{route('admin.ads.delete', ['id' => $advertise->id])}}"
                                                           method="post">
                                                         <input type="hidden" name="_method" value="delete">
                                                         <button type="submit" class="btn btn-danger">حذف</button>

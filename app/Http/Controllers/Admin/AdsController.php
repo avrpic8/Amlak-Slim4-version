@@ -50,20 +50,48 @@ class AdsController
         return $response
             ->withHeader('Location', '/admin/ads')
             ->withStatus(302);
-
     }
 
     public function edit(Request $request, Response $response, array $args): Response
     {
+        $advertise = Ads::query()->find($args['id']);
+        $categories = Category::all();
+        return view($response, 'admin.ads.edit', compact('advertise', 'categories'));
     }
 
     public function update(Request $request, Response $response, array $args): Response
     {
+        $adsRequest = new CreateAdsRequest($request);
+        $data = $adsRequest->all();
+        $file = $adsRequest->getFile('image');
 
+        $validation = $adsRequest->dataValidation();
+        if(!$validation) back();
+
+        $data['user_id'] = Auth::user()->id;
+        $data['status'] = 0;
+        $data['view'] = 0;
+
+        /// store image
+        if(!empty($file['tmp_name'])) {
+            $path = 'images/ads/' . date('Y/M/d');
+            $name = date('Y_m_d_H_i_s_') . rand(10, 99);
+            $data['image'] = ImageUpload::UploadAndFitImage($file, $path, $name, 800, 499);
+        }
+
+        /// save to database
+        Ads::query()->where('id', $args['id'])->update($data);
+
+        return $response
+            ->withHeader('Location', '/admin/ads')
+            ->withStatus(302);
     }
 
     public function destroy(Request $request, Response $response, array $args): Response
     {
-
+        Ads::query()->where('id', $args['id'])->delete();
+        return $response
+            ->withHeader('Location', '/admin/ads')
+            ->withStatus(302);
     }
 }
