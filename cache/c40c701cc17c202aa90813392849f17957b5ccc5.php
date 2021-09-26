@@ -1,12 +1,9 @@
-@extends('admin.layouts.app')
-
-
-@section('head')
+<?php $__env->startSection('head'); ?>
     <title>ادمین | گالری</title>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
     <div class="content-header row">
 
@@ -20,13 +17,13 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">آگهی - گالری</h4>
-                            <span><a href="{{route('admin.ads.index')}}" class="btn btn-success">بازگشت</a></span>
+                            <span><a href="<?php echo e(route('admin.ads.index')); ?>" class="btn btn-success">بازگشت</a></span>
                         </div>
                         <div class="card-content">
                             <div class="card-body card-dashboard">
 
                                 <form class="row"
-                                      action="{{route('admin.ads.store.gallery.image', ['id' => $advertise->id])}}"
+                                      action="<?php echo e(route('admin.ads.store.gallery.image', ['id' => $advertise->id])); ?>"
                                       method="post"
                                       enctype="multipart/form-data">
 
@@ -46,13 +43,13 @@
                                 </form>
                                 <div class="col-md-12 mt-4 pt-4">
                                     <div class="row">
-                                        @foreach($galleries as $gallery)
+                                        <?php $__currentLoopData = $galleries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gallery): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <div class="col-md-3 text-center">
-                                                <div><img style="width: 100%;" src="{{asset($gallery->image)}}" alt="">
+                                                <div><img style="width: 100%;" src="<?php echo e(asset($gallery->image)); ?>" alt="">
                                                 </div>
-                                                <a class="btn btn-danger my-1" href="{{route('admin.ads.delete.gallery.image', ['id'=>$gallery->id])}}">حذف</a>
+                                                <a class="btn btn-danger my-1" href="<?php echo e(route('admin.ads.delete.gallery.image', ['id'=>$gallery->id])); ?>">حذف</a>
                                             </div>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                 </div>
                             </div>
@@ -63,4 +60,5 @@
         </section>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/saeed/Smart Electronics/Web/Amlak-slim4/resources/views/admin/ads/gallery.blade.php ENDPATH**/ ?>

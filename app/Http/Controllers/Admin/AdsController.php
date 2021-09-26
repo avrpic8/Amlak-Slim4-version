@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Models\Gallery;
 use App\Http\Requests\Admin\CreateAdsRequest;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -93,5 +94,37 @@ class AdsController
         return $response
             ->withHeader('Location', '/admin/ads')
             ->withStatus(302);
+    }
+
+    public function gallery(Request $request, Response $response, array $args): Response
+    {
+        $advertise = Ads::query()->find($args['id']);
+        $galleries = Gallery::query()->where('advertise_id', $args['id'])->get();
+        return view($response, 'admin.ads.gallery', compact('advertise', 'galleries'));
+    }
+
+    public function storeGalleryImage(Request $request, Response $response, array $args){
+
+        if(empty($_FILES['image']['name'])) {
+            error('image', 'image must be set');
+            back();
+        }
+
+
+        $inputs = [];
+        $inputs['advertise_id'] = $args['id'];
+
+        $path = 'images/gallery/' . date('Y/M/d');
+        $name = date('Y_m_d_H_i_s_') . rand(10, 99);
+        $inputs['image'] = ImageUpload::UploadAndFitImage($_FILES['image'], $path, $name, 700, 400);
+
+        Gallery::query()->create($inputs);
+        back();
+    }
+
+    public function destroyGalleryImage(Request $request, Response $response, array $args){
+
+        Gallery::query()->where('id', $args['id'])->delete();
+        back();
     }
 }

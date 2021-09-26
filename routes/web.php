@@ -93,7 +93,7 @@ return function (App $app) {
         $group->post('/store-gallery-image/{id}', [AdsController::class , 'storeGalleryImage'])
             ->setName('admin.ads.store.gallery.image');
 
-        $group->post('/delete-gallery-image/{id}', [AdsController::class , 'destroyGalleryImage'])
+        $group->get('/delete-gallery-image/{id}', [AdsController::class , 'destroyGalleryImage'])
             ->setName('admin.ads.delete.gallery.image');
 
     })->add(new AuthMiddleware($app->getResponseFactory()));
