@@ -41,8 +41,9 @@
                                      data-i18n="Calender">آگهی</span></a>
             </li>
 
-            <li class=" nav-item "><a href=""><i class="feather icon-calendar"></i><span class="menu-title"
-                                                                                         data-i18n="Calender">اسلاید شو</span></a>
+            <li class="nav-item {{sideBarActive(route('admin.slide.index'))}}"><a href="{{route('admin.slide.index')}}"><i
+                            class="feather icon-calendar"></i><span class="menu-title"
+                                                                    data-i18n="Calender">اسلاید شو</span></a>
             </li>
             <li class=" nav-item"><a href=""><i class="feather icon-calendar"></i><span class="menu-title"
                                                                                         data-i18n="Calender">نظرات</span></a>

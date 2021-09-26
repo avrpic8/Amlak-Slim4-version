@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdsController;
+use App\Http\Controllers\Admin\SlideController;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 use App\Http\Middleware\AuthMiddleware;
@@ -95,6 +96,29 @@ return function (App $app) {
 
         $group->get('/delete-gallery-image/{id}', [AdsController::class , 'destroyGalleryImage'])
             ->setName('admin.ads.delete.gallery.image');
+
+    })->add(new AuthMiddleware($app->getResponseFactory()));
+
+    /// Slider Routes
+    $app->group('/admin/slide', function (RouteCollectorProxy $group){
+
+        $group->get('', [SlideController::class , 'index'])
+            ->setName('admin.slide.index');
+
+        $group->get('/create', [SlideController::class , 'create'])
+            ->setName('admin.slide.create');
+
+        $group->post('/store', [SlideController::class , 'store'])
+            ->setName('admin.slide.store');
+
+        $group->get('/edit/{id}', [SlideController::class , 'edit'])
+            ->setName('admin.slide.edit');
+
+        $group->post('/update/{id}', [SlideController::class , 'update'])
+            ->setName('admin.slide.update');
+
+        $group->post('/delete/{id}', [SlideController::class , 'destroy'])
+            ->setName('admin.slide.delete');
 
     })->add(new AuthMiddleware($app->getResponseFactory()));
 };

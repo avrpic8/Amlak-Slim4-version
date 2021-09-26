@@ -30,7 +30,7 @@
                                         <fieldset class="form-group">
                                             <label for="title">عنوان</label>
                                             <input value="{{old('title')}}"  name="title" type="text" id="title" class="form-control {{errorClass('title')}}" placeholder="عنوان ...">
-                                            {{errorText('title')}}
+                                            <?=errorText('title')?>
                                         </fieldset>
                                     </div>
 
@@ -40,7 +40,7 @@
                                         <fieldset class="form-group">
                                             <label for="image">تصویر</label>
                                             <input name="image" type="file" id="image" class="form-control-file {{errorClass('file')}}">
-                                            {{errorText('file')}}
+                                            <?=errorText('file')?>
                                         </fieldset>
                                     </div>
 
@@ -48,7 +48,7 @@
                                         <fieldset class="form-group">
                                             <label for="address">آدرس</label>
                                             <input value="{{old('address')}}"  name="address" type="text" id="address" class="form-control {{errorClass('address')}}" placeholder="آدرس ...">
-                                            {{errorText('address')}}
+                                            <?=errorText('address')?>
                                         </fieldset>
                                     </div>
 
@@ -57,7 +57,7 @@
                                         <fieldset class="form-group">
                                             <label for="floor">کف</label>
                                             <input value="{{old('floor')}}"  name="floor" type="text" id="floor" class="form-control {{errorClass('floor')}}" placeholder="کف ...">
-                                            {{errorText('floor')}}
+                                            <?=errorText('floor')?>
                                         </fieldset>
                                     </div>
 
@@ -66,7 +66,7 @@
                                         <fieldset class="form-group">
                                             <label for="year">سال ساخت</label>
                                             <input value="{{old('year')}}"  name="year" type="text" id="year" class="form-control {{errorClass('year')}}" placeholder="سال ساخت ...">
-                                            {{errorText('year') }}
+                                            <?=errorText('year') ?>
                                         </fieldset>
                                     </div>
 
@@ -74,7 +74,7 @@
                                         <fieldset class="form-group">
                                             <label for="amount">قیمت</label>
                                             <input value="{{old('amount')}}"  name="amount" type="text" id="amount" class="form-control {{errorClass('amount')}}" placeholder="قیمت ...">
-                                            {{errorText('amount')}}
+                                            <?=errorText('amount')?>
                                         </fieldset>
                                     </div>
 
@@ -82,7 +82,7 @@
                                         <fieldset class="form-group">
                                             <label for="area">متراژ</label>
                                             <input value="{{old('area')}}"  name="area" type="text" id="area" class="form-control {{errorClass('area')}}" placeholder="سال ساخت ...">
-                                            {{errorText('area')}}
+                                            <?=errorText('area')?>
                                         </fieldset>
                                     </div>
 
@@ -90,7 +90,7 @@
                                         <fieldset class="form-group">
                                             <label for="room">اتاق</label>
                                             <input value="{{old('room')}}" name="room" type="text" id="room" class="form-control {{errorClass('room')}}" placeholder="سال ساخت ...">
-                                            {{errorText('room')}}
+                                            <?=errorText('room')?>
                                         </fieldset>
                                     </div>
 
@@ -99,7 +99,7 @@
                                         <fieldset class="form-group">
                                             <label for="tag">تگ</label>
                                             <input value="{{old('tag')}}"  name="tag" type="text" id="tag" class="form-control {{errorClass('tag')}}" placeholder="تگ ...">
-                                            {{errorText('tag')}}
+                                            <?=errorText('tag')?>
                                         </fieldset>
                                     </div>
 
@@ -108,7 +108,7 @@
                                         <section class="form-group">
                                             <label for="description">متن</label>
                                             <textarea class="form-control {{errorClass('description')}}" id="description" rows="5" name="description" placeholder="متن ...">{{old('description')}}</textarea>
-                                            {{errorText('description')}}
+                                            <?=errorText('description')?>
                                         </section>
                                     </div>
 
@@ -121,7 +121,7 @@
                                                     <option value="0">ندارد</option>
                                                     <option value="1">دارد</option>
                                                 </select>
-                                                {{errorText('storeroom')}}
+                                                <?=errorText('storeroom')?>
                                             </div>
                                         </fieldset>
                                     </div>
@@ -134,7 +134,7 @@
                                                     <option value="0">ندارد</option>
                                                     <option value="1">دارد</option>
                                                 </select>
-                                                {{errorText('balcony')}}
+                                                <?=errorText('balcony')?>
                                             </div>
                                         </fieldset>
                                     </div>
@@ -148,7 +148,7 @@
                                                     <option value="فرنگی">فرنگی</option>
                                                     <option value="ایرانی و فرنگی">ایرانی و فرنگی</option>
                                                 </select>
-                                                {{errorText('toilet')}}
+                                                <?=errorText('toilet')?>
                                             </div>
                                         </fieldset>
                                     </div>
@@ -162,7 +162,7 @@
                                                     <option value="0">خرید</option>
                                                     <option value="1">اجاره</option>
                                                 </select>
-                                                {{errorText('sell_status')}}
+                                                <?=errorText('sell_status')?>
                                             </div>
                                         </fieldset>
                                     </div>
@@ -177,7 +177,7 @@
                                                     <option value="2">زمین</option>
                                                     <option value="3">سوله</option>
                                                 </select>
-                                                {{errorText('type')}}
+                                                <?=errorText('type')?>
                                             </div>
                                         </fieldset>
                                     </div>
@@ -191,7 +191,7 @@
                                                     <option value="0">ندارد</option>
                                                     <option value="1">دارد</option>
                                                 </select>
-                                                {{errorText('parking')}}
+                                                <?=errorText('parking')?>
                                             </div>
                                         </fieldset>
                                     </div>
