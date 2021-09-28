@@ -53,6 +53,21 @@ $settings['db'] = [
     ],
 ];
 
+$settings['MAIL'] = [
+
+    'SMTP' => [
+        'Host'       => '',
+        'SMTPAuth'   => true,
+        'Username'   => '33',
+        'Password'   => '22',
+        'Port'       => 587,
+        'setFrom'    => [
+            'mail'  =>  'support@amlak.com',
+            'name'  =>  'test'
+        ]
+    ]
+];
+
 $settings['APP'] = [
     'APP_TITLE' => 'Amlak-slim4',
     'BASE_URL'  => 'http://localhost:8000',

@@ -62,6 +62,7 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
             'PhpDocReader\\' => 13,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'O' => 
         array (
@@ -228,6 +229,10 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         array (
             0 => __DIR__ . '/..' . '/php-di/phpdoc-reader/src/PhpDocReader',
         ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'Opis\\Closure\\' => 
         array (
             0 => __DIR__ . '/..' . '/opis/closure/src',
@@ -338,16 +343,27 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
 
     public static $classMap = array (
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
+        'App\\Http\\Controllers\\Admin\\AdsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdsController.php',
         'App\\Http\\Controllers\\Admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoryController.php',
+        'App\\Http\\Controllers\\Admin\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CommentController.php',
         'App\\Http\\Controllers\\Admin\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PostController.php',
+        'App\\Http\\Controllers\\Admin\\SlideController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SlideController.php',
+        'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
         'App\\Http\\Controllers\\MainController' => __DIR__ . '/../..' . '/app/Http/Controllers/MainController.php',
         'App\\Http\\Middleware\\AuthMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthMiddleware.php',
+        'App\\Http\\Models\\Ads' => __DIR__ . '/../..' . '/app/Http/Models/Ads.php',
         'App\\Http\\Models\\Category' => __DIR__ . '/../..' . '/app/Http/Models/Category.php',
+        'App\\Http\\Models\\Comment' => __DIR__ . '/../..' . '/app/Http/Models/Comment.php',
+        'App\\Http\\Models\\Gallery' => __DIR__ . '/../..' . '/app/Http/Models/Gallery.php',
         'App\\Http\\Models\\Post' => __DIR__ . '/../..' . '/app/Http/Models/Post.php',
+        'App\\Http\\Models\\Slide' => __DIR__ . '/../..' . '/app/Http/Models/Slide.php',
         'App\\Http\\Models\\User' => __DIR__ . '/../..' . '/app/Http/Models/User.php',
         'App\\Http\\Requests\\Admin\\CategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/CategoryRequest.php',
+        'App\\Http\\Requests\\Admin\\CommentRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/CommentRequest.php',
+        'App\\Http\\Requests\\Admin\\CreateAdsRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/CreateAdsRequest.php',
         'App\\Http\\Requests\\Admin\\CreatePostRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/CreatePostRequest.php',
-        'App\\Http\\Requests\\Admin\\UpdatePostRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/UpdatePostRequest.php',
+        'App\\Http\\Requests\\Admin\\SlideRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/SlideRequest.php',
+        'App\\Http\\Requests\\Admin\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/UserRequest.php',
         'App\\Http\\Services\\ImageUpload' => __DIR__ . '/../..' . '/app/Http/Services/ImageUpload.php',
         'App\\Providers\\DatabaseProvider' => __DIR__ . '/../..' . '/app/Providers/DatabaseProvider.php',
         'App\\Providers\\Provider' => __DIR__ . '/../..' . '/app/Providers/Provider.php',
@@ -1357,6 +1373,11 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         'Opis\\Closure\\SecurityProvider' => __DIR__ . '/..' . '/opis/closure/src/SecurityProvider.php',
         'Opis\\Closure\\SelfReference' => __DIR__ . '/..' . '/opis/closure/src/SelfReference.php',
         'Opis\\Closure\\SerializableClosure' => __DIR__ . '/..' . '/opis/closure/src/SerializableClosure.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
         'PhpDocReader\\AnnotationException' => __DIR__ . '/..' . '/php-di/phpdoc-reader/src/PhpDocReader/AnnotationException.php',
         'PhpDocReader\\PhpDocReader' => __DIR__ . '/..' . '/php-di/phpdoc-reader/src/PhpDocReader/PhpDocReader.php',
         'PhpDocReader\\PhpParser\\TokenParser' => __DIR__ . '/..' . '/php-di/phpdoc-reader/src/PhpDocReader/PhpParser/TokenParser.php',
