@@ -41,14 +41,16 @@
                                      data-i18n="Calender">آگهی</span></a>
             </li>
 
-            <li class=" nav-item "><a href=""><i class="feather icon-calendar"></i><span class="menu-title"
-                                                                                         data-i18n="Calender">اسلاید شو</span></a>
+            <li class="nav-item <?php echo e(sideBarActive(route('admin.slide.index'))); ?>"><a href="<?php echo e(route('admin.slide.index')); ?>"><i
+                            class="feather icon-calendar"></i><span class="menu-title"
+                                                                    data-i18n="Calender">اسلاید شو</span></a>
             </li>
-            <li class=" nav-item"><a href=""><i class="feather icon-calendar"></i><span class="menu-title"
-                                                                                        data-i18n="Calender">نظرات</span></a>
+            <li class="nav-item <?php echo e(sideBarActive(route('admin.comment.index'))); ?>"><a href="<?php echo e(route('admin.comment.index')); ?>"><i class="feather icon-calendar"></i><span class="menu-title"
+                                                           data-i18n="Calender">نظرات</span></a>
             </li>
-            <li class=" nav-item"><a href=""><i class="feather icon-calendar"></i><span class="menu-title"
-                                                                                        data-i18n="Calender">کاربران</span></a>
+            <li class="nav-item <?php echo e(sideBarActive(route('admin.user.index'))); ?>"><a href="<?php echo e(route('admin.user.index')); ?>"><i class="feather
+            icon-calendar"></i><span class="menu-title"
+                                     data-i18n="Calender">کاربران</span></a>
             </li>
 
         </ul>

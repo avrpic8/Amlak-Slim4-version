@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\AdsController;
-use App\Http\Controllers\Admin\SlideController;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 use App\Http\Middleware\AuthMiddleware;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
-
+use App\Http\Controllers\Admin\AdsController;
+use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\SlideController;
+use App\Http\Controllers\Admin\UserController;
 
 return function (App $app) {
 
@@ -119,6 +120,40 @@ return function (App $app) {
 
         $group->post('/delete/{id}', [SlideController::class , 'destroy'])
             ->setName('admin.slide.delete');
+
+    })->add(new AuthMiddleware($app->getResponseFactory()));
+
+    /// Comment Routes
+    $app->group('/admin/comment', function (RouteCollectorProxy $group){
+
+        $group->get('', [CommentController::class , 'index'])
+            ->setName('admin.comment.index');
+
+        $group->get('/show/{id}', [CommentController::class , 'show'])
+            ->setName('admin.comment.show');
+
+        $group->get('/approved/{id}', [CommentController::class , 'approved'])
+            ->setName('admin.comment.approved');
+
+        $group->post('/answer/{id}', [CommentController::class , 'answer'])
+            ->setName('admin.comment.answer');
+
+    })->add(new AuthMiddleware($app->getResponseFactory()));
+
+    /// User Routes
+    $app->group('/admin/user', function (RouteCollectorProxy $group){
+
+        $group->get('', [UserController::class , 'index'])
+            ->setName('admin.user.index');
+
+        $group->get('/edit/{id}', [UserController::class , 'edit'])
+            ->setName('admin.user.edit');
+
+        $group->post('/update/{id}', [UserController::class , 'update'])
+            ->setName('admin.user.update');
+
+        $group->get('/change-status/{id}', [UserController::class , 'changeStatus'])
+            ->setName('admin.user.change.status');
 
     })->add(new AuthMiddleware($app->getResponseFactory()));
 };
