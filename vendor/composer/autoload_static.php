@@ -25,6 +25,7 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'b33e3d135e5d9e47d845c576147bda89' => __DIR__ . '/..' . '/php-di/php-di/src/functions.php',
+        '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -35,6 +36,7 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         'S' => 
         array (
             'System\\' => 7,
+            'Symfony\\Polyfill\\Uuid\\' => 22,
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Php73\\' => 23,
             'Symfony\\Polyfill\\Php72\\' => 23,
@@ -130,6 +132,10 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         'System\\' => 
         array (
             0 => __DIR__ . '/../..' . '/system',
+        ),
+        'Symfony\\Polyfill\\Uuid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-uuid',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -348,6 +354,7 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         'App\\Http\\Controllers\\Admin\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CommentController.php',
         'App\\Http\\Controllers\\Admin\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PostController.php',
         'App\\Http\\Controllers\\Admin\\SlideController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SlideController.php',
+        'App\\Http\\Controllers\\Admin\\UploadController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UploadController.php',
         'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
         'App\\Http\\Controllers\\MainController' => __DIR__ . '/../..' . '/app/Http/Controllers/MainController.php',
         'App\\Http\\Middleware\\AuthMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthMiddleware.php',
@@ -364,7 +371,9 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         'App\\Http\\Requests\\Admin\\CreatePostRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/CreatePostRequest.php',
         'App\\Http\\Requests\\Admin\\SlideRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/SlideRequest.php',
         'App\\Http\\Requests\\Admin\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/UserRequest.php',
+        'App\\Http\\Services\\FilenameFilter' => __DIR__ . '/../..' . '/app/Http/Services/FilenameFilter.php',
         'App\\Http\\Services\\ImageUpload' => __DIR__ . '/../..' . '/app/Http/Services/ImageUpload.php',
+        'App\\Http\\Services\\MailService' => __DIR__ . '/../..' . '/app/Http/Services/MailService.php',
         'App\\Providers\\DatabaseProvider' => __DIR__ . '/../..' . '/app/Providers/DatabaseProvider.php',
         'App\\Providers\\Provider' => __DIR__ . '/../..' . '/app/Providers/Provider.php',
         'App\\Providers\\SessionProvider' => __DIR__ . '/../..' . '/app/Providers/SessionProvider.php',
@@ -1899,6 +1908,7 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
         'Symfony\\Polyfill\\Php73\\Php73' => __DIR__ . '/..' . '/symfony/polyfill-php73/Php73.php',
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
+        'Symfony\\Polyfill\\Uuid\\Uuid' => __DIR__ . '/..' . '/symfony/polyfill-uuid/Uuid.php',
         'System\\Application\\Application' => __DIR__ . '/../..' . '/system/Application/Application.php',
         'System\\Auth\\Auth' => __DIR__ . '/../..' . '/system/Auth/Auth.php',
         'System\\DataBase\\DBBuilder\\DBBuilder' => __DIR__ . '/../..' . '/system/DataBase/DBBuilder/DBBuilder.php',

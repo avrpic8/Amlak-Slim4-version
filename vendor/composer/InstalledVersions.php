@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'd1d3e0058a7c8822ebdaebefd72f0c6da48962f0',
+    'reference' => '5f8b2e0057918bfb4d7c6fbc507ca41f039bdd10',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'd1d3e0058a7c8822ebdaebefd72f0c6da48962f0',
+      'reference' => '5f8b2e0057918bfb4d7c6fbc507ca41f039bdd10',
     ),
     'doctrine/inflector' => 
     array (
@@ -539,6 +539,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '1100343ed1a92e3a38f9ae122fc0eb21602547be',
+    ),
+    'symfony/polyfill-uuid' => 
+    array (
+      'pretty_version' => 'v1.23.0',
+      'version' => '1.23.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9165effa2eb8a31bb3fa608df9d529920d21ddd9',
     ),
     'symfony/service-contracts' => 
     array (

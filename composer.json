@@ -12,7 +12,9 @@
         "ext-openssl": "*",
         "intervention/image": "^2.6",
         "ext-json": "*",
-        "phpmailer/phpmailer": "^6.5"
+        "phpmailer/phpmailer": "^6.5",
+        "symfony/polyfill-uuid": "^1.23",
+        "ext-http": "*"
     },
 
     "autoload": {

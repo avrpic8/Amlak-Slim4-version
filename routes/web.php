@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdsController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UploadController;
 
 return function (App $app) {
 
@@ -156,4 +157,9 @@ return function (App $app) {
             ->setName('admin.user.change.status');
 
     })->add(new AuthMiddleware($app->getResponseFactory()));
+
+    /// Uploads Route
+    $app->post('/upload', [UploadController::class , 'store'])
+        ->add(new AuthMiddleware($app->getResponseFactory()))
+        ->setName('admin.upload');
 };
