@@ -1,7 +1,3 @@
-
-
-
-
 <?php $__env->startSection('head'); ?>
     <title>کاربران | ویرایش</title>
 <?php $__env->stopSection(); ?>

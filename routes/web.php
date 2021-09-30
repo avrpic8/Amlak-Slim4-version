@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdsController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\RegisterController;
 
 return function (App $app) {
 
@@ -156,4 +157,14 @@ return function (App $app) {
             ->setName('admin.user.change.status');
 
     })->add(new AuthMiddleware($app->getResponseFactory()));
+
+
+
+    //// ================ Auth Routes ================
+
+    $app->get('/register', [RegisterController::class , 'view'])
+        ->setName('auth.register.view');
+
+    $app->post('/register', [RegisterController::class , 'register'])
+        ->setName('auth.register');
 };
