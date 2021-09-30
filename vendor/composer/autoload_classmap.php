@@ -29,6 +29,7 @@ return array(
     'App\\Http\\Requests\\Admin\\SlideRequest' => $baseDir . '/app/Http/Requests/Admin/SlideRequest.php',
     'App\\Http\\Requests\\Admin\\UserRequest' => $baseDir . '/app/Http/Requests/Admin/UserRequest.php',
     'App\\Http\\Services\\ImageUpload' => $baseDir . '/app/Http/Services/ImageUpload.php',
+    'App\\Http\\Services\\MailService' => $baseDir . '/app/Http/Services/MailService.php',
     'App\\Providers\\DatabaseProvider' => $baseDir . '/app/Providers/DatabaseProvider.php',
     'App\\Providers\\Provider' => $baseDir . '/app/Providers/Provider.php',
     'App\\Providers\\SessionProvider' => $baseDir . '/app/Providers/SessionProvider.php',

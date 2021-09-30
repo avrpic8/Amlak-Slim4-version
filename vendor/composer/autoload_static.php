@@ -365,6 +365,7 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         'App\\Http\\Requests\\Admin\\SlideRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/SlideRequest.php',
         'App\\Http\\Requests\\Admin\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/UserRequest.php',
         'App\\Http\\Services\\ImageUpload' => __DIR__ . '/../..' . '/app/Http/Services/ImageUpload.php',
+        'App\\Http\\Services\\MailService' => __DIR__ . '/../..' . '/app/Http/Services/MailService.php',
         'App\\Providers\\DatabaseProvider' => __DIR__ . '/../..' . '/app/Providers/DatabaseProvider.php',
         'App\\Providers\\Provider' => __DIR__ . '/../..' . '/app/Providers/Provider.php',
         'App\\Providers\\SessionProvider' => __DIR__ . '/../..' . '/app/Providers/SessionProvider.php',
