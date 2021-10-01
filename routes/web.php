@@ -162,9 +162,16 @@ return function (App $app) {
 
     //// ================ Auth Routes ================
 
-    $app->get('/register', [RegisterController::class , 'view'])
-        ->setName('auth.register.view');
+    $app->group('/register', function (RouteCollectorProxy $group){
 
-    $app->post('/register', [RegisterController::class , 'register'])
-        ->setName('auth.register');
+        $group->get('', [RegisterController::class , 'view'])
+            ->setName('auth.register.view');
+
+        $group->post('', [RegisterController::class , 'register'])
+            ->setName('auth.register');
+
+        $group->get('/activation/{token}', [RegisterController::class , 'activation'])
+            ->setName('auth.activation');
+    });
+
 };

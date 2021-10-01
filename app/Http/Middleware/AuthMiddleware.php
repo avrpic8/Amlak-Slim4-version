@@ -23,7 +23,7 @@ class AuthMiddleware implements MiddlewareInterface {
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        Auth::loginById(1);
+        Auth::loginById(7);
         Auth::check();
         if(Auth::user()->user_type != 'admin'){
 

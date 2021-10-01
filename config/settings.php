@@ -56,14 +56,14 @@ $settings['db'] = [
 $settings['MAIL'] = [
 
     'SMTP' => [
-        'Host'       => '',
+        'Host'       => 'smtp.gmail.com',
         'SMTPAuth'   => true,
-        'Username'   => '33',
-        'Password'   => '22',
+        'Username'   => 'avrpic8@gmail.com',
+        'Password'   => '1804154318041',
         'Port'       => 587,
         'setFrom'    => [
-            'mail'  =>  'support@amlak.com',
-            'name'  =>  'test'
+            'mail'  =>  'avrpic8@gmail.com',
+            'name'  =>  'PHP-MVC'
         ]
     ]
 ];

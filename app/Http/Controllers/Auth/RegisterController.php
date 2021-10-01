@@ -19,15 +19,16 @@ class RegisterController
     public function register(Request $request, Response $response): Response
     {
         $regRequest = new RegisterRequest($request);
-        $validation = $regRequest->dataValidation(true);if(!$validation) back();
+        $validation = $regRequest->dataValidation(true);
+        if(!$validation) back();
 
         $data = $regRequest->all();
         $file = $regRequest->getFile('avatar');
 
         $path = 'images/avatar/' . date('Y/M/d');
         $name = date('Y_m_d_H_i_s_') . rand(10,99);
-        $data['avatar'] = ImageUpload::UploadAndFitImage($file, $path, $name, 100, 100);
 
+        $data['avatar'] = ImageUpload::UploadAndFitImage($file, $path, $name, 100, 100);
         $data['verify_token'] = generateToken();
         $data['is_active'] = 0;
         $data['user_type'] = 'user';
@@ -36,7 +37,6 @@ class RegisterController
         $data['remember_token_expire'] = null;
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-
         User::query()->create($data);
 
         // send email
@@ -44,7 +44,7 @@ class RegisterController
             <h2>ایمیل فعال سازی</h2>
             <p>کاربرگرامی ثبت نام شما با موفقیت صورت گرفت برای فعال سازی حساب کاربری خود روی لینک زیر کلیک کنید</p>
             <p style="text-align: center">
-                <a href="'. route('auth.activation', ['verify_token' => $data['verify_token']]).'"> فعال سازی </a>
+                <a href="'. currentDomain() . route('auth.activation', ['token' => $data['verify_token']]).'"> فعال سازی </a>
             </p>
         ';
 
@@ -54,6 +54,17 @@ class RegisterController
         return $response
             ->withHeader('Location', '/login')
             ->withStatus(302);
+    }
 
+    public function activation(Request $request, Response $response, array $args): Response
+    {
+        $user = User::query()->where('verify_token', $args['token'])->first();
+        if(empty($user)){
+            die('کد صحیح نمیباشد.');
+        }
+        $user->is_active = 1;
+        $user->save();
+
+        die('حساب فعال شد');
     }
 }
