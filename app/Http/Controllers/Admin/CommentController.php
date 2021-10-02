@@ -27,14 +27,17 @@ class CommentController
     {
         $comment = Comment::query()->find($args['id']);
         if($comment->approved == 0){
-            Comment::query()->where('id', $args['id'])->update(['approved'=>1]);
+            $comment->approved = 1;
         }else{
-            Comment::query()->where('id', $args['id'])->update(['approved'=>0]);
+            $comment->approved = 0;
         }
+        $comment->save();
+        $response->getBody()->write(strval($comment->approved));
+        return $response;
 
-        return $response
-            ->withHeader('Location', '/admin/comment')
-            ->withStatus(302);
+//        return $response
+//            ->withHeader('Location', '/admin/comment')
+//            ->withStatus(302);
     }
 
     public function answer(Request $request, Response $response, array $args): Response

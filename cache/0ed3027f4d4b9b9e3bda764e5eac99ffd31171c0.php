@@ -48,10 +48,8 @@
                                             <td><img src="<?= asset($user->avatar) ?>" alt=""></td>
                                             <td><?= $user->is_active == 1 ? '<span class="text-success">فعال</span>' : '<span class="text-danger">غیرفعال</span>' ?></td>
                                             <td style="width: 22rem; text-align: left;">
-                                                <a href="<?= route('admin.user.edit', ['id' => $user->id]) ?>"
-                                                   class="btn btn-info">ویرایش</a>
-                                                <a href="<?= route('admin.user.change.status', ['id' => $user->id]) ?>"
-                                                   class="btn btn-warning">تغییر وضعیت</a>
+                                                <a href="<?= route('admin.user.edit', ['id' => $user->id]) ?>" class="btn btn-info">ویرایش</a>
+                                                <a id="<?php echo e($user->id); ?>" onclick="changeState(this)" class="btn btn-warning text-white">تغییر وضعیت</a>
                                             </td>
                                         </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -66,6 +64,34 @@
         </section>
         <!--/ Zero configuration table -->
     </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+
+    <script>
+
+        function changeState(element){
+
+            const xhttp = new XMLHttpRequest();
+            let state = 0;
+
+            // Send a request
+            xhttp.open("GET", "user/change-status/" + element.id, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send();
+
+            xhttp.onload = function (){
+
+                const el = $(element).closest('tr').find('td:eq(5) span');
+                if(this.responseText === '1')
+                    $(el).removeClass('text-danger').addClass('text-success').text('فعال');
+                else
+                    $(el).removeClass('text-success').addClass('text-danger').text('غیرفعال');
+            }
+        }
+
+    </script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/saeed/Smart Electronics/Web/Amlak-slim4/resources/views/admin/user/index.blade.php ENDPATH**/ ?>

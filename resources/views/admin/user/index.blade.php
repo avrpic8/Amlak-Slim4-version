@@ -48,10 +48,8 @@
                                             <td><img src="<?= asset($user->avatar) ?>" alt=""></td>
                                             <td><?= $user->is_active == 1 ? '<span class="text-success">فعال</span>' : '<span class="text-danger">غیرفعال</span>' ?></td>
                                             <td style="width: 22rem; text-align: left;">
-                                                <a href="<?= route('admin.user.edit', ['id' => $user->id]) ?>"
-                                                   class="btn btn-info">ویرایش</a>
-                                                <a href="<?= route('admin.user.change.status', ['id' => $user->id]) ?>"
-                                                   class="btn btn-warning">تغییر وضعیت</a>
+                                                <a href="<?= route('admin.user.edit', ['id' => $user->id]) ?>" class="btn btn-info">ویرایش</a>
+                                                <a id="{{ $user->id}}" onclick="changeState(this)" class="btn btn-warning text-white">تغییر وضعیت</a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -66,5 +64,33 @@
         </section>
         <!--/ Zero configuration table -->
     </div>
+
+@endsection
+
+@section('scripts')
+
+    <script>
+
+        function changeState(element){
+
+            const xhttp = new XMLHttpRequest();
+            let state = 0;
+
+            // Send a request
+            xhttp.open("GET", "user/change-status/" + element.id, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send();
+
+            xhttp.onload = function (){
+
+                const el = $(element).closest('tr').find('td:eq(5) span');
+                if(this.responseText === '1')
+                    $(el).removeClass('text-danger').addClass('text-success').text('فعال');
+                else
+                    $(el).removeClass('text-success').addClass('text-danger').text('غیرفعال');
+            }
+        }
+
+    </script>
 
 @endsection

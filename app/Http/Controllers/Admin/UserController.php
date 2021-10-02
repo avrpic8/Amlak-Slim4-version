@@ -58,8 +58,10 @@ class UserController
         }
         $user->save();
 
-        return $response
-            ->withHeader('Location', '/admin/user')
-            ->withStatus(302);
+        $response->getBody()->write(strval($user->is_active));
+        return $response;
+//        return $response
+//            ->withHeader('Location', '/admin/user')
+//            ->withStatus(302);
     }
 }
