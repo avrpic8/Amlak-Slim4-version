@@ -7,6 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'voku\\' => array($vendorDir . '/voku/portable-ascii/src/voku'),
+    'Zeuxisoo\\Whoops\\Slim\\Tests\\' => array($vendorDir . '/zeuxisoo/slim-whoops/tests'),
+    'Zeuxisoo\\Whoops\\Slim\\' => array($vendorDir . '/zeuxisoo/slim-whoops/src/Zeuxisoo/Whoops/Slim'),
+    'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
     'System\\' => array($baseDir . '/system'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Php73\\' => array($vendorDir . '/symfony/polyfill-php73'),

@@ -32,6 +32,15 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         array (
             'voku\\' => 5,
         ),
+        'Z' => 
+        array (
+            'Zeuxisoo\\Whoops\\Slim\\Tests\\' => 27,
+            'Zeuxisoo\\Whoops\\Slim\\' => 21,
+        ),
+        'W' => 
+        array (
+            'Whoops\\' => 7,
+        ),
         'S' => 
         array (
             'System\\' => 7,
@@ -126,6 +135,18 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'Zeuxisoo\\Whoops\\Slim\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zeuxisoo/slim-whoops/tests',
+        ),
+        'Zeuxisoo\\Whoops\\Slim\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zeuxisoo/slim-whoops/src/Zeuxisoo/Whoops/Slim',
+        ),
+        'Whoops\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
         ),
         'System\\' => 
         array (
@@ -349,6 +370,7 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         'App\\Http\\Controllers\\Admin\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PostController.php',
         'App\\Http\\Controllers\\Admin\\SlideController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SlideController.php',
         'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
+        'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\MainController' => __DIR__ . '/../..' . '/app/Http/Controllers/MainController.php',
         'App\\Http\\Middleware\\AuthMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthMiddleware.php',
         'App\\Http\\Models\\Ads' => __DIR__ . '/../..' . '/app/Http/Models/Ads.php',
@@ -364,6 +386,8 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         'App\\Http\\Requests\\Admin\\CreatePostRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/CreatePostRequest.php',
         'App\\Http\\Requests\\Admin\\SlideRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/SlideRequest.php',
         'App\\Http\\Requests\\Admin\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/UserRequest.php',
+        'App\\Http\\Requests\\Auth\\RegisterRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/RegisterRequest.php',
+        'App\\Http\\Services\\HtmlErrorRenderer' => __DIR__ . '/../..' . '/app/Http/Services/HtmlErrorRenderer.php',
         'App\\Http\\Services\\ImageUpload' => __DIR__ . '/../..' . '/app/Http/Services/ImageUpload.php',
         'App\\Http\\Services\\MailService' => __DIR__ . '/../..' . '/app/Http/Services/MailService.php',
         'App\\Providers\\DatabaseProvider' => __DIR__ . '/../..' . '/app/Providers/DatabaseProvider.php',
@@ -1907,6 +1931,29 @@ class ComposerStaticInit146127f65202d20bf3f4f3e2f1aef13b
         'System\\Session\\Session' => __DIR__ . '/../..' . '/system/Session/Session.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+        'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
+        'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',
+        'Whoops\\Exception\\Frame' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Frame.php',
+        'Whoops\\Exception\\FrameCollection' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/FrameCollection.php',
+        'Whoops\\Exception\\Inspector' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Inspector.php',
+        'Whoops\\Handler\\CallbackHandler' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/CallbackHandler.php',
+        'Whoops\\Handler\\Handler' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/Handler.php',
+        'Whoops\\Handler\\HandlerInterface' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/HandlerInterface.php',
+        'Whoops\\Handler\\JsonResponseHandler' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/JsonResponseHandler.php',
+        'Whoops\\Handler\\PlainTextHandler' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/PlainTextHandler.php',
+        'Whoops\\Handler\\PrettyPageHandler' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/PrettyPageHandler.php',
+        'Whoops\\Handler\\XmlResponseHandler' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/XmlResponseHandler.php',
+        'Whoops\\Run' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Run.php',
+        'Whoops\\RunInterface' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/RunInterface.php',
+        'Whoops\\Util\\HtmlDumperOutput' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/HtmlDumperOutput.php',
+        'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
+        'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
+        'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'Zeuxisoo\\Whoops\\Slim\\Tests\\TestCase' => __DIR__ . '/..' . '/zeuxisoo/slim-whoops/tests/TestCase.php',
+        'Zeuxisoo\\Whoops\\Slim\\Tests\\WhoopsGuardTest' => __DIR__ . '/..' . '/zeuxisoo/slim-whoops/tests/WhoopsGuardTest.php',
+        'Zeuxisoo\\Whoops\\Slim\\Tests\\WhoopsMiddlewareTest' => __DIR__ . '/..' . '/zeuxisoo/slim-whoops/tests/WhoopsMiddlewareTest.php',
+        'Zeuxisoo\\Whoops\\Slim\\WhoopsGuard' => __DIR__ . '/..' . '/zeuxisoo/slim-whoops/src/Zeuxisoo/Whoops/Slim/WhoopsGuard.php',
+        'Zeuxisoo\\Whoops\\Slim\\WhoopsMiddleware' => __DIR__ . '/..' . '/zeuxisoo/slim-whoops/src/Zeuxisoo/Whoops/Slim/WhoopsMiddleware.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
 

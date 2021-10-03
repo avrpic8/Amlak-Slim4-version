@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\RegisterController;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 return function (App $app) {
 
@@ -173,5 +175,12 @@ return function (App $app) {
         $group->get('/activation/{token}', [RegisterController::class , 'activation'])
             ->setName('auth.activation');
     });
+
+
+    //// ================ NotFound Route ================
+//    $app->get('{route:.*}', function (Request $request, Response $response){
+//        return view($response, 'error.404');
+//    });
+
 
 };

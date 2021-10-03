@@ -1,10 +1,12 @@
-<?php $__env->startSection('head'); ?>
+@extends('page')
 
-    <title>ثبت نام</title>
-    <link rel="stylesheet" href="<?php echo e(asset('admin-assets/css-rtl/pages/authentication.css')); ?>">
-<?php $__env->stopSection(); ?>
+@section('head')
 
-<?php $__env->startSection('content'); ?>
+    <title>خطای ۴۰۴</title>
+    <link rel="stylesheet" href="{{asset('admin-assets/css-rtl/pages/authentication.css')}}">
+@endsection
+
+@section('content')
 
     <div class="content-header row">
     </div>
@@ -14,7 +16,7 @@
                 <div class="card bg-authentication rounded-0 mb-0">
                     <div class="row m-0">
                         <div class="col-lg-6 d-lg-block d-none text-center align-self-center pl-0 pr-3 py-0">
-                            <img src="admin-assets/images/pages/register.jpg" alt="branding logo">
+                            <img src="{{asset('admin-assets/images/pages/register.jpg')}}" alt="branding logo">
                         </div>
                         <div class="col-lg-6 col-12 p-0">
                             <div class="card rounded-0 mb-0 p-2">
@@ -37,7 +39,7 @@
 
                                 <div class="card-content">
                                     <div class="card-body pt-0">
-                                        <form action="<?php echo e(route('auth.register')); ?>" method="post"
+                                        <form action="" method="post"
                                               enctype="multipart/form-data">
                                             <div class="form-label-group">
                                                 <input type="text" name="first_name" id="first_name"
@@ -100,5 +102,4 @@
         </section>
 
     </div>
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/saeed/Smart Electronics/Web/Amlak-slim4/resources/views/auth/error.blade.php ENDPATH**/ ?>
+@endsection

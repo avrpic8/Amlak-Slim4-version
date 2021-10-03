@@ -57,7 +57,6 @@ class UserController
             $user->is_active = 1;
         }
         $user->save();
-
         $response->getBody()->write(strval($user->is_active));
         return $response;
 //        return $response
