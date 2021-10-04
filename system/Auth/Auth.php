@@ -51,16 +51,16 @@ class Auth{
             return true;
     }
 
-    public static function loginByEmail($email, $password){
-
-        $user = User::where('email', $email)->get();
+    public static function loginByEmail($email, $password): bool
+    {
+        $user = User::query()->where('email', $email)->first();
         if(empty($user)){
             error('login', 'کاربر وجود ندارد');
             return false;
         }
 
-        if(password_verify($password, $user[0]->password) and $user[0]->is_active == 1){
-            Session::set("user", $user[0]->id);
+        if(password_verify($password, $user->password) and $user->is_active == 1){
+            Session::set("user", $user->id);
             return true;
         }else{
             error('login', 'کلمه عبور اشتباه است');

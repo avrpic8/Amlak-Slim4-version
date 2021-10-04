@@ -25,15 +25,18 @@
                                 </div>
                                 <p class="px-2">برای ایجاد حساب اطلاعات زیر را وارد کنید</p>
 
-                                <div class="alert alert-danger">
-                                    <ul>
+                                <?php if(errorExist()){?>
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            <?php $__currentLoopData = allErrors(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <li>
+                                                    <?php echo e($error); ?>
 
-                                        <li>
-                                            خطا
-                                        </li>
-
-                                    </ul>
-                                </div>
+                                                </li>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </ul>
+                                    </div>
+                                <?php }?>
 
                                 <div class="card-content">
                                     <div class="card-body pt-0">
@@ -65,7 +68,7 @@
                                                 <label for="password">کلمه عبور</label>
                                             </div>
                                             <div class="form-label-group">
-                                                <input type="password" name="confirm_password" id="confirm_password"
+                                                <input type="password" name="password_confirmation" id="confirm_password"
                                                        class="form-control" placeholder="Confirm Password" required>
                                                 <label for="confirm_password">تکرار کلمه عبور</label>
                                             </div>
@@ -84,7 +87,7 @@
                                                     </fieldset>
                                                 </div>
                                             </div>
-                                            <a href=""
+                                            <a href="<?php echo e(route('auth.login')); ?>"
                                                class="btn btn-outline-primary float-left btn-inline mb-50">ورود</a>
                                             <button type="submit" class="btn btn-primary float-right btn-inline mb-50">
                                                 ثبت اطلاعات
@@ -101,4 +104,4 @@
 
     </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/saeed/Smart Electronics/Web/Amlak-slim4/resources/views/auth/error.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/saeed/Smart Electronics/Web/Amlak-slim4/resources/views/auth/register.blade.php ENDPATH**/ ?>

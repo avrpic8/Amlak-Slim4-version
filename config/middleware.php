@@ -8,7 +8,6 @@ use Slim\Exception\HttpMethodNotAllowedException;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Middleware\ErrorMiddleware;
 use Slim\Psr7\Response;
-use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 return function (App $app) {
     // Parse json, form data and xml
@@ -18,7 +17,6 @@ return function (App $app) {
     $app->addRoutingMiddleware();
     //$app->add(new WhoopsMiddleware(['enable' => true]));
 
-
     $app->add(function (ServerRequestInterface $request, RequestHandlerInterface $handler) {
 
         try {
@@ -26,7 +24,8 @@ return function (App $app) {
         }
         catch (HttpNotFoundException $httpException) {
             $response = new Response();
-            return view($response, 'error.404');
+            $response->getBody()->write('404 Not Found');
+            return $response;
         }
         catch (HttpMethodNotAllowedException $notAllowedException){
             $response = (new Response())->withStatus(405);

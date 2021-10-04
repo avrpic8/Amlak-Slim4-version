@@ -7,7 +7,8 @@ use Psr\Container\ContainerInterface;
 use Jenssegers\Blade\Blade;
 use Laminas\Config\Config;
 
-function view(Response $response, $template, $with = []){
+function view(Response $response, $template, $with = []): Response
+{
     $cache = __DIR__ . '/../../cache';
     $views = __DIR__ . '/../../resources/views';
     $blade = (new Blade($views, $cache))->make($template, $with);
@@ -81,9 +82,12 @@ function error($name, $message = null){
     }
 }
 
-function errorExist($name){
+function errorExist($name = null){
 
-    return isset($_SESSION["temporary_errorFlash"][$name]) === true ? true : false;
+    if($name == null) {
+        return isset($_SESSION["temporary_errorFlash"]) === true ? count($_SESSION["temporary_errorFlash"]) : false;
+    }
+    return isset($_SESSION["temporary_errorFlash"][$name]) === true;
 }
 
 function allErrors(){

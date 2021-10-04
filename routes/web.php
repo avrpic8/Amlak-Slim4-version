@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotController;
+use App\Http\Controllers\Auth\LoginController;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 use App\Http\Middleware\AuthMiddleware;
@@ -11,8 +13,6 @@ use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\RegisterController;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
 
 return function (App $app) {
 
@@ -164,6 +164,15 @@ return function (App $app) {
 
     //// ================ Auth Routes ================
 
+    $app->group('/login', function (RouteCollectorProxy $group){
+
+        $group->get('', [LoginController::class, 'view'])
+            ->setName('auth.login.view');
+
+        $group->post('', [LoginController::class, 'login'])
+            ->setName('auth.login');
+    });
+
     $app->group('/register', function (RouteCollectorProxy $group){
 
         $group->get('', [RegisterController::class , 'view'])
@@ -176,6 +185,14 @@ return function (App $app) {
             ->setName('auth.activation');
     });
 
+    $app->group('/forgot', function (RouteCollectorProxy $group){
+
+        $group->get('', [ForgotController::class , 'view'])
+            ->setName('auth.forgot.view');
+
+        $group->post('', [ForgotController::class , 'forgot'])
+            ->setName('auth.forgot');
+    });
 
     //// ================ NotFound Route ================
 //    $app->get('{route:.*}', function (Request $request, Response $response){

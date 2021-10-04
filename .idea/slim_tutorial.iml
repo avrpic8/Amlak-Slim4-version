@@ -22,7 +22,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-factory" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-server-middleware" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fig/http-message-util" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/macroable" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/simple-cache" />
@@ -64,8 +63,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpmailer/phpmailer" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/filp/whoops" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zeuxisoo/slim-whoops" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/filp/whoops" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

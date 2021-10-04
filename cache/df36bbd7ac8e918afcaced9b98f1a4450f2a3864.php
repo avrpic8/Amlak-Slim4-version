@@ -1,1 +1,0 @@
-<?php /**PATH /home/saeed/Smart Electronics/Web/Amlak-slim4/resources/views/admin/ads/create.blade.php ENDPATH**/ ?>

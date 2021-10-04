@@ -29,7 +29,7 @@ class RegisterRequest
         /// data validation
         $rules = [
             'email' => 'required|max:64|email|unique:users,email',
-            'password' => 'required|min:8',
+            'password' => 'required|confirmed|min:8',
             'first_name' => 'required',
             'last_name' => 'required',
         ];
