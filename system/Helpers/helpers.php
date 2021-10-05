@@ -1,11 +1,12 @@
 <?php
 
+use PHLAK\Config\Config;
 use Slim\App;
 use System\Application\Application;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Container\ContainerInterface;
 use Jenssegers\Blade\Blade;
-use Laminas\Config\Config;
+
 
 function view(Response $response, $template, $with = []): Response
 {

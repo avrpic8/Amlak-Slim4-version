@@ -13,7 +13,6 @@ class MailService
     {
         //Create an instance; passing `true` enables exceptions
         $mail = new PHPMailer(true);
-        $mailSets = getConfig()->toArray();
 
         try {
 
@@ -21,15 +20,15 @@ class MailService
             //Server settings
             $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = $mailSets['MAIL']['SMTP']['Host'];     //Set the SMTP server to send through
-            $mail->SMTPAuth   = $mailSets['MAIL']['SMTP']['SMTPAuth'];                                 //Enable SMTP authentication
-            $mail->Username   = $mailSets['MAIL']['SMTP']['Username'];  //SMTP username
-            $mail->Password   = $mailSets['MAIL']['SMTP']['Password'];  //SMTP password
+            $mail->Host       = getConfig()->get('MAIL.SMTP.Host');    //Set the SMTP server to send through
+            $mail->SMTPAuth   = getConfig()->get('MAIL.SMTP.SMTPAuth');                                 //Enable SMTP authentication
+            $mail->Username   = getConfig()->get('MAIL.SMTP.Username');  //SMTP username
+            $mail->Password   = getConfig()->get('MAIL.SMTP.Password'); //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-            $mail->Port       = $mailSets['MAIL']['SMTP']['Port'];      //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->Port       = getConfig()->get('MAIL.SMTP.Port');      //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
             //Recipients
-            $mail->setFrom($mailSets['MAIL']['SMTP']['setFrom']['mail'], $mailSets['MAIL']['SMTP']['setFrom']['name']);
+            $mail->setFrom(getConfig()->get('MAIL.SMTP.setFrom.mail'), getConfig()->get('MAIL.SMTP.setFrom.name'));
             $mail->addAddress($emailAddress);     //Add a recipient
 
             //Content

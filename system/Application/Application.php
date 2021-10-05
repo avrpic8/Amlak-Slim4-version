@@ -7,7 +7,7 @@ use App\Providers\SessionProvider;
 use App\Providers\TranslationProvider;
 use DI\Container;
 use DI\ContainerBuilder;
-use Laminas\Config\Config;
+use PHLAK\Config\Config;
 use Slim\App;
 use Illuminate\Database\Capsule\Manager;
 

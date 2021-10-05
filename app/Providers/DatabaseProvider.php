@@ -18,7 +18,7 @@ class DatabaseProvider extends Provider
 
     public function boot()
     {
-        $dbSettings = getConfig()->toArray()['db'];
+        $dbSettings = getConfig()->get('db');
         $this->capsule = new Manager();
         $this->capsule->addConnection($dbSettings);
         $this->capsule->bootEloquent();

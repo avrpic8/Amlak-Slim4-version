@@ -24,8 +24,8 @@ class TranslationProvider extends Provider
     {
         $loader = new FileLoader(new Filesystem(), resource('langs'));
 
-        $this->translator = new Translator($loader, getConfig()->toArray()['APP']['locale']);
-        $this->translator->setFallback(getConfig()->toArray()['APP']['fallback_locale']);
+        $this->translator = new Translator($loader, getConfig()->get('APP.locale', 'en'));
+        $this->translator->setFallback(getConfig()->get('APP.fallback_locale', 'en'));
 
         $this->container->set('translator', function (){
             return $this->translator;

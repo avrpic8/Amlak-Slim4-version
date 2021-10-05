@@ -4,16 +4,16 @@
         "slim/psr7": "^1.4",
         "php-di/php-di": "^6.3",
         "jenssegers/blade": "^1.4",
-        "illuminate/database": "^8.59",
-        "illuminate/validation": "^8.61",
-        "illuminate/translation": "^8.61",
-        "laminas/laminas-config": "^3.6",
+        "illuminate/database": "7.*",
+        "illuminate/validation": "7.*",
+        "illuminate/translation": "7.*",
+        "phlak/config": "^7.0",
+        "phpmailer/phpmailer": "^6.5",
+        "zeuxisoo/slim-whoops": "^0.7.3",
+        "intervention/image": "^2.6",
         "ext-pdo": "*",
         "ext-openssl": "*",
-        "intervention/image": "^2.6",
-        "ext-json": "*",
-        "phpmailer/phpmailer": "^6.5",
-        "zeuxisoo/slim-whoops": "^0.7.3"
+        "ext-json": "*"
     },
 
     "autoload": {

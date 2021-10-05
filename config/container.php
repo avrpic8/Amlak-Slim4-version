@@ -1,6 +1,6 @@
 <?php
 
-use Laminas\Config\Config;
+use PHLAK\Config\Config;
 use Psr\Container\ContainerInterface;
 use Slim\App;
 use Slim\Factory\AppFactory;

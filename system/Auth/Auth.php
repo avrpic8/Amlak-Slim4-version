@@ -14,7 +14,7 @@ class Auth{
             redirect('login');
         }
 
-        $user = User::find(Session::get('user'));
+        $user = User::query()->find(Session::get('user'));
         if(empty($user)){
             Session::remove('user');
             redirect('login');
@@ -29,7 +29,7 @@ class Auth{
             redirect('login');
         }
 
-        $user = User::find(Session::get('user'));
+        $user = User::query()->find(Session::get('user'));
         if(empty($user)){
             Session::remove('user');
             redirect('login');
@@ -70,7 +70,7 @@ class Auth{
 
     public static function loginById($id){
 
-        $user = User::find($id);
+        $user = User::query()->find($id);
         if(empty($user)){
             error('login', 'کاربر وجود ندارد');
             return false;
