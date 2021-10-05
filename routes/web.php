@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\ForgotController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ResetPassController;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 use App\Http\Middleware\AuthMiddleware;
@@ -164,6 +165,7 @@ return function (App $app) {
 
     //// ================ Auth Routes ================
 
+    /// Login Routes
     $app->group('/login', function (RouteCollectorProxy $group){
 
         $group->get('', [LoginController::class, 'view'])
@@ -173,6 +175,7 @@ return function (App $app) {
             ->setName('auth.login');
     });
 
+    /// Register Routes
     $app->group('/register', function (RouteCollectorProxy $group){
 
         $group->get('', [RegisterController::class , 'view'])
@@ -185,6 +188,7 @@ return function (App $app) {
             ->setName('auth.activation');
     });
 
+    /// Forget Pass Routes
     $app->group('/forgot', function (RouteCollectorProxy $group){
 
         $group->get('', [ForgotController::class , 'view'])
@@ -192,6 +196,16 @@ return function (App $app) {
 
         $group->post('', [ForgotController::class , 'forgot'])
             ->setName('auth.forgot');
+    });
+
+    /// Reset Password Routes
+    $app->group('/reset-pass/', function (RouteCollectorProxy $group){
+
+        $group->get('{token}', [ResetPassController::class , 'view'])
+            ->setName('auth.reset-pass.view');
+
+        $group->post('{token}', [ResetPassController::class , 'resetPassword'])
+            ->setName('auth.reset-pass');
     });
 
     //// ================ NotFound Route ================

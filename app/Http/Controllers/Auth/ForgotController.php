@@ -43,7 +43,7 @@ class ForgotController
         }
 
         $user->remember_token = generateToken();
-        $user->remember_token_expire = date('Y-m-d H:m:s', strtotime(' + 10 min'));
+        $user->remember_token_expire = date('Y-m-d H:i:s', strtotime(' + 10 min'));
         $user->save();
 
         // send email
@@ -51,7 +51,7 @@ class ForgotController
         <h2>ایمیل بازیابی رمز عبور </h2>
         <p>کاربرگرامی برای بازیابی رمز عبور از لینک زیر استفاده کنید</p>
         <p style="text-align: center">
-            <a href="'. currentDomain() . route('auth.reset-pass.view', ['rememberToken' => $user['remember_token']])
+            <a href="'. currentDomain() . route('auth.reset-pass.view', ['token' => $user['remember_token']])
             .'"> بازیابی رمز عبور </a>
         </p>
     ';
