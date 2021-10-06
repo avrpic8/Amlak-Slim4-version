@@ -70,7 +70,7 @@ $settings['MAIL'] = [
 
 $settings['APP'] = [
     'APP_TITLE' => 'Amlak-slim4',
-    'BASE_URL'  => 'https://phpmvc.iran.liara.run/',
+    'BASE_URL'  => 'https://phpmvc.iran.liara.run',
     'BASE_DIR'  => dirname(__DIR__),
     'locale'    => 'en',
     'fallback_locale' => 'en',
