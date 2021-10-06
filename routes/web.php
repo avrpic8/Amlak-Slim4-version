@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Auth\ForgotController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\ResetPassController;
+use App\Http\Controllers\Home\HomeController;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 use App\Http\Middleware\AuthMiddleware;
@@ -207,6 +209,26 @@ return function (App $app) {
         $group->post('{token}', [ResetPassController::class , 'resetPassword'])
             ->setName('auth.reset-pass');
     });
+
+    /// Index Route
+    $app->get('/logout', [LogoutController::class , 'logout'])
+        ->setName('auth.logout');
+
+
+
+    //// ================ APP Routes ================
+
+    /// Index Route
+    $app->get('/', [HomeController::class , 'index'])
+        ->setName('home.index');
+
+    $app->get('/home', [HomeController::class , 'index'])
+        ->setName('home.home');
+
+
+
+
+
 
     //// ================ NotFound Route ================
 //    $app->get('{route:.*}', function (Request $request, Response $response){

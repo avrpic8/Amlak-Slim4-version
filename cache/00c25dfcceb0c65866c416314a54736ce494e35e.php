@@ -33,7 +33,8 @@ use System\Auth\Auth;
                                        width="40"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href=""><i class="feather icon-power"></i> خروج</a>
+                            <a class="dropdown-item" href="<?php echo e(route('auth.logout')); ?>"><i class="feather icon-power"></i>
+                                خروج</a>
                         </div>
                     </li>
                 </ul>
