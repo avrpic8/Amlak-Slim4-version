@@ -34,7 +34,7 @@ $settings['error'] = [
 $settings['db'] = [
     'driver' => 'mysql',
     'host' => '127.0.0.1',
-    'database' => 'new_mvc',
+    'database' => 'php_mvc',
     'username' => 'root',
     'password' => '',
     'collation' => 'utf8_general_ci',
@@ -70,7 +70,7 @@ $settings['MAIL'] = [
 
 $settings['APP'] = [
     'APP_TITLE' => 'Amlak-slim4',
-    'BASE_URL'  => 'http://localhost:8000',
+    'BASE_URL'  => 'https://phpmvc.iran.liara.run/',
     'BASE_DIR'  => dirname(__DIR__),
     'locale'    => 'en',
     'fallback_locale' => 'en',
