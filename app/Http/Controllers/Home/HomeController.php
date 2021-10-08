@@ -13,13 +13,14 @@ class HomeController
     public function index(Request $request, Response $response): Response{
 
         $slides = Slide::all();
-        $newestAds = Ads::query()->orderBy('created_at', 'desc')->limit(6)->get();
+        $newestAds = Ads::query()->orderBy('created_at', 'desc')->take(6)->get();
         $bestAds = Ads::query()->orderBy('view', 'desc')->limit(4)->get();
         $posts = Post::query()
             ->where('published_at', '<=', date('Y-m-d H:i:s'))
             ->orderBy('created_at', 'desc')
             ->limit(4)
             ->get();
+
         return view($response, 'app.index', compact('slides', 'newestAds', 'bestAds', 'posts'));
     }
 }

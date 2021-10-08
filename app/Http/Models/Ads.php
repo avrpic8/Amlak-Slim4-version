@@ -27,4 +27,24 @@ class Ads extends Model
 
         return $this->hasMany(Gallery::class, 'advertise_id', 'id');
     }
+
+    public function sellStatus(): string
+    {
+        return ($this->sell_status == 0) ? 'خرید' : 'اجاره';
+    }
+
+    public function type(): string
+    {
+        switch ($this->type){
+
+            case 0:
+                return 'آپارتمان';
+            case 1:
+                return 'ویلایی';
+            case 2:
+                return 'زمین';
+            case 3:
+                return 'سوله';
+        }
+    }
 }
