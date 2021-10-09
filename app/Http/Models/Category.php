@@ -15,4 +15,9 @@ class Category extends Model{
 
         return $this->belongsTo(Category::class, 'parent_id', 'id');
     }
+
+    public function ads()
+    {
+        return $this->hasMany(Ads::class, 'cat_id', 'id');
+    }
 }

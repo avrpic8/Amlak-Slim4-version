@@ -218,15 +218,20 @@ return function (App $app) {
 
     //// ================ APP Routes ================
 
-    /// Index Route
-    $app->get('/', [HomeController::class , 'index'])
-        ->setName('home.index');
+    $app->group('/', function (RouteCollectorProxy $group){
 
-    $app->get('/home', [HomeController::class , 'index'])
-        ->setName('home.home');
+        $group->get('', [HomeController::class , 'index'])
+            ->setName('home.index');
 
+        $group->get('home', [HomeController::class , 'index'])
+            ->setName('home.home');
 
+        $group->get('about', [HomeController::class , 'about'])
+            ->setName('home.about');
 
+        $group->get('ads/{id}', [HomeController::class , 'ads'])
+            ->setName('home.ads');
+    });
 
 
 

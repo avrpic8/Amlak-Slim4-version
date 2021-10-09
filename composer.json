@@ -13,7 +13,8 @@
         "intervention/image": "^2.6",
         "ext-pdo": "*",
         "ext-openssl": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "morilog/jalali": "3.*"
     },
 
     "autoload": {
