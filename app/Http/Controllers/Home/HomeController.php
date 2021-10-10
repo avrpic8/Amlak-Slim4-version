@@ -42,6 +42,12 @@ class HomeController extends MainController
         return view($response, 'app.about');
     }
 
+    public function allAds(Request $request, Response $response): Response
+    {
+        $ads = Ads::all();
+        return view($response, 'app.all-ads', compact('ads'));
+    }
+
     public function ads(Request $request, Response $response, array $args): Response
     {
         $advertise = Ads::query()->find($args['id']);
@@ -60,4 +66,11 @@ class HomeController extends MainController
         return view($response, 'app.ads',
             compact('advertise', 'galleries', 'posts', 'relatedAds', 'categories'));
     }
+
+    function allPosts(Request $request, Response $response): Response
+    {
+        $posts = Post::all();
+        return view($response, 'app.all-posts', compact('posts'));
+    }
+
 }

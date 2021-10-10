@@ -11,7 +11,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item {{(currentRoute() == route('home.index')) ? 'active' : ''}}"><a href="{{route('home.index')}}" class="nav-link">خانه</a>
                 </li>
-                <li class="nav-item "><a href="property.html" class="nav-link">آگهی ها</a></li>
+                <li class="nav-item {{(currentRoute() == route('home.all.ads')) ? 'active' : ''}}"><a href="{{route('home.all.ads')}}" class="nav-link">آگهی ها</a></li>
                 <li class="nav-item {{(currentRoute() == route('home.about')) ? 'active' : ''}}"><a href="{{route('home.about')}}" class="nav-link">درباره ما</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">بلاگ</a></li>
                 <li class="nav-item cta"><a href="contact.html" class="nav-link ml-lg-1 mr-lg-5"><span

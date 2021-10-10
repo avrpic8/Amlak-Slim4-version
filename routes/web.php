@@ -229,8 +229,14 @@ return function (App $app) {
         $group->get('about', [HomeController::class , 'about'])
             ->setName('home.about');
 
+        $group->get('ads', [HomeController::class , 'allAds'])
+            ->setName('home.all.ads');
+
         $group->get('ads/{id}', [HomeController::class , 'ads'])
             ->setName('home.ads');
+
+        $group->get('posts', [HomeController::class , 'allPosts'])
+            ->setName('home.all.posts');
     });
 
 
