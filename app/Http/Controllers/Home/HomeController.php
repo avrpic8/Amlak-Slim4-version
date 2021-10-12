@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\MainController;
 use App\Http\Models\Ads;
 use App\Http\Models\Category;
+use App\Http\Models\Comment;
 use App\Http\Models\Post;
 use App\Http\Models\Slide;
+use App\Http\Requests\UserCommentRequest;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use System\Auth\Auth;
 
 class HomeController extends MainController
 {
@@ -67,10 +70,51 @@ class HomeController extends MainController
             compact('advertise', 'galleries', 'posts', 'relatedAds', 'categories'));
     }
 
+    function category(Request $request, Response $response, array $args): Response
+    {
+        $category = Category::query()->find($args['id']);
+        $ads = $category->ads()->get();
+        $posts = $category->posts()->get();
+        return view($response, 'app.category', compact('category', 'ads', 'posts'));
+    }
+
     function allPosts(Request $request, Response $response): Response
     {
         $posts = Post::all();
         return view($response, 'app.all-posts', compact('posts'));
+    }
+
+    function post(Request $request, Response $response, array $args): Response
+    {
+        $post = Post::query()->find($args['id']);
+        $posts = Post::query()
+            ->where('published_at', '<=', date('Y-m-d H:i:s'))
+            ->orderBy('created_at', 'desc')->take(4)->get();
+        $categories = Category::all();
+        $comments = Comment::query()
+            ->where('approved', 1)
+            ->whereNull('parent_id')
+            ->where('post_id', $args['id'])->get();
+
+        return view($response, 'app.post',
+            compact('post', 'posts', 'categories', 'comments'));
+    }
+
+    function comment(Request $request, Response $response, array $args): Response
+    {
+        $comRequest = new UserCommentRequest($request);
+        if(!$comRequest->dataValidation()) back();
+
+        $data = $comRequest->all();
+        $data['post_id'] = $args['id'];
+        $data['approved'] = 0;
+        $data['status'] = 0;
+        $data['user_id'] = Auth::user()->id;
+
+        Comment::query()->create($data);
+        return $response
+            ->withHeader('Location', '/post/'.$args['id'])
+            ->withStatus(302);
     }
 
 }

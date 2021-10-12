@@ -13,11 +13,9 @@
                 </li>
                 <li class="nav-item {{(currentRoute() == route('home.all.ads')) ? 'active' : ''}}"><a href="{{route('home.all.ads')}}" class="nav-link">آگهی ها</a></li>
                 <li class="nav-item {{(currentRoute() == route('home.about')) ? 'active' : ''}}"><a href="{{route('home.about')}}" class="nav-link">درباره ما</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">بلاگ</a></li>
-                <li class="nav-item cta"><a href="contact.html" class="nav-link ml-lg-1 mr-lg-5"><span
-                                class="icon-user m-2"></span>ورود</a></li>
-                <li class="nav-item cta cta-colored"><a href="contact.html" class="nav-link"><span
-                                class="icon-pencil m-2"></span>ثبت نام</a></li>
+                <li class="nav-item {{(currentRoute() == route('home.all.posts')) ? 'active' : ''}}"><a href="{{route('home.all.posts')}}" class="nav-link">بلاگ</a></li>
+                <li class="nav-item cta"><a href="{{route('auth.login.view')}}" class="nav-link ml-lg-1 mr-lg-5"><span class="icon-user m-2"></span>ورود</a></li>
+                <li class="nav-item cta cta-colored"><a href="{{route('auth.register.view')}}" class="nav-link"><span class="icon-pencil m-2"></span>ثبت نام</a></li>
 
             </ul>
         </div>

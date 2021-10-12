@@ -20,4 +20,9 @@ class Category extends Model{
     {
         return $this->hasMany(Ads::class, 'cat_id', 'id');
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'cat_id', 'id');
+    }
 }

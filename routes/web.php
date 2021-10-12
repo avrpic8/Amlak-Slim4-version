@@ -235,8 +235,17 @@ return function (App $app) {
         $group->get('ads/{id}', [HomeController::class , 'ads'])
             ->setName('home.ads');
 
+        $group->get('category/{id}', [HomeController::class , 'category'])
+            ->setName('home.category');
+
         $group->get('posts', [HomeController::class , 'allPosts'])
             ->setName('home.all.posts');
+
+        $group->get('post/{id}', [HomeController::class , 'post'])
+            ->setName('home.post');
+
+        $group->post('post/comment/{id}', [HomeController::class , 'comment'])
+            ->setName('home.post.comment');
     });
 
 
