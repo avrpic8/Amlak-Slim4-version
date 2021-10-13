@@ -251,6 +251,9 @@ return function (App $app) {
             ->setName('home.search');
     });
 
+    /// Ajax Request test
+    $app->get('/ajax-last-posts', [HomeController::class , 'lastPosts'])
+        ->setName('home.last.post');
 
 
     //// ================ NotFound Route ================

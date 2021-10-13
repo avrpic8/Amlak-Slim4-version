@@ -136,4 +136,27 @@ class HomeController extends MainController
         }
     }
 
+    public function lastPosts(Request $request, Response $response, array $args): Response
+    {
+        $posts = Post::query()
+            ->where('published_at', '<=', date('Y-m-d H:i:s'))
+            ->orderBy('created_at', 'desc')
+            ->limit(4)
+            ->get();
+
+        $array = [];
+        foreach ($posts as $post){
+
+            $post['user'] = $post->user()->value('first_name') . ' ' . $post->user()->value('last_name');
+            $post['created'] = \Morilog\Jalali\Jalalian::forge($post->created_at)->format('%B %d، %Y');
+            $post['url'] = route('home.post', ['id'=>$post->id]);
+            array_push($array, $post);
+        }
+
+        $result = json_encode($array, JSON_UNESCAPED_UNICODE);
+        $response->getBody()->write($result);
+        return $response
+            ->withHeader('Content-Type', 'application/json')
+            ->withStatus(200);
+    }
 }

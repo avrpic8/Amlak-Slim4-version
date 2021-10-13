@@ -282,4 +282,58 @@
         </div>
     </section>
 
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <span class="subheading">مقالات</span>
+                    <h2>آخرین بلاگ ها</h2>
+                </div>
+            </div>
+            <div id="last_post" class="row d-flex"></div>
+        </div>
+    </section>
+
+
+@endsection
+
+@section('scripts')
+
+    <script>
+
+        $(window).on('load', function (){
+
+            $.ajax({
+                url:"<?= route('home.last.post')?>",
+                success: function (result){
+
+                    let posts = result;
+                    let htmlString = '';
+                    console.log(posts.length);
+                    for(let i=0; i<posts.length; i++){
+                        let post = posts[i];
+                        htmlString += '<div class="col-md-3 d-flex fadeIn ftco-animated">';
+                        htmlString += '<div class="blog-entry align-self-stretch">';
+                        htmlString += '<a href="'+ post.url +'" class="block-20" style="background-image: url('+
+                           post.image +');">';
+                        htmlString += '</a>';
+
+                        htmlString += '<div class="text mt-3 d-block">';
+                        htmlString += '<h3 class="heading mt-3"><a href="'+ post.url +'">'+ post.title +'</a></h3>';
+                        htmlString += '<div class="meta mb-3">';
+                        htmlString += '<div>' + post.created + '</div>';
+                        htmlString += '<div>' + post.user + '</div>';
+                        htmlString += '</div>';
+                        htmlString += '</div>';
+                        htmlString += '</div>';
+                        htmlString += '</div>';
+                    }
+                    $('#last_post').html(htmlString);
+                }
+            });
+        });
+
+
+    </script>
+
 @endsection

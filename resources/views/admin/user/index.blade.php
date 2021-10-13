@@ -73,15 +73,12 @@
 
         function changeState(element){
 
-            const xhttp = new XMLHttpRequest();
-            let state = 0;
-
+            const xHttp = new XMLHttpRequest();
             // Send a request
-            xhttp.open("GET", "user/change-status/" + element.id, true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send();
-
-            xhttp.onload = function (){
+            xHttp.open("GET", "user/change-status/" + element.id, true);
+            xHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xHttp.send();
+            xHttp.onload = function (){
 
                 const el = $(element).closest('tr').find('td:eq(5) span');
                 if(this.responseText === '1')
