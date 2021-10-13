@@ -117,4 +117,23 @@ class HomeController extends MainController
             ->withStatus(302);
     }
 
+    function search(Request $request, Response $response, array $args): Response
+    {
+        if(isset($_GET['search'])) {
+            $search = '%' . $_GET['search'] . '%';
+            $ads = Ads::query()
+                ->where('title', 'LIKE', $search)
+                ->orWhere('tag', 'LIKE', $search)
+                ->get();
+
+            $posts = Post::query()->where('title', 'LIKE', $search)->get();
+
+            return view($response, 'app.search', compact('ads', 'posts'));
+        } else{
+            return $response
+                ->withHeader('Location', '/')
+                ->withStatus(302);
+        }
+    }
+
 }

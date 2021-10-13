@@ -33,14 +33,14 @@
                 <div class="col-md-12 search-wrap">
                     <h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span>جستوجو
                     </h2>
-                    <form action="#" class="search-property">
+                    <form action="{{route('home.search')}}" class="search-property" method="get">
                         <div class="row">
                             <div class="col-md align-items-end">
                                 <div class="form-group">
-                                    <label for="#">عنوان اگهی</label>
+                                    <label for="search">عنوان اگهی</label>
                                     <div class="form-field">
                                         <div class="icon"><span class="icon-pencil "></span></div>
-                                        <input type="text" class="form-control text-right" placeholder="عنوان">
+                                        <input type="text" name="search" class="form-control text-right" placeholder="عنوان">
                                     </div>
                                 </div>
                             </div>

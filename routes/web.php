@@ -246,6 +246,9 @@ return function (App $app) {
 
         $group->post('post/comment/{id}', [HomeController::class , 'comment'])
             ->setName('home.post.comment');
+
+        $group->get('search', [HomeController::class , 'search'])
+            ->setName('home.search');
     });
 
 

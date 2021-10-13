@@ -33,10 +33,14 @@ use System\Auth\Auth;
                                        width="40"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{{route('home.index')}}"><i class="feather icon-home"></i>
+                                سایت</a>
+
                             <a class="dropdown-item" href="{{route('auth.logout')}}"><i class="feather icon-power"></i>
                                 خروج</a>
                         </div>
                     </li>
+
                 </ul>
             </div>
         </div>
